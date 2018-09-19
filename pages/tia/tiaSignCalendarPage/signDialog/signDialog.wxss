@@ -1,0 +1,92 @@
+.sign-dialog-container {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.3952);
+}
+
+.dialog-content {
+    width: 85%;
+    border-radius: 14rpx;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-title {
+    color: #000000;
+    font-size: 46rpx;
+    margin-top: 45rpx;
+}
+
+.sign-dialog-icon {
+    width: 164rpx;
+    height: 164rpx;
+    margin-top: 26rpx;
+    background-color: #ffffff;
+}
+
+.sign-desc-con {
+    margin-top: 65rpx;
+    font-size: 30rpx;
+}
+
+.sign-complete,.sign-desc-complete {
+    text-align: left;
+    font-size: 30rpx;
+    color: #4b4b4b;
+    margin-top: 16rpx;
+}
+
+.sign-no-complete {
+    color: #FD2C4B;
+}
+
+.sign-share-btn {
+    width: 84%;
+    font-size: 55rpx;
+    color: #ffffff;
+    padding: 10rpx 0;
+    text-align: center;
+    background-color: #FD2C4B;
+    border-radius: 4rpx;
+    margin: 49rpx 0 37rpx;
+}
+
+.sign-dialog-icon-no {
+    margin: 70rpx 0 30rpx;
+    width: 175rpx;
+    height: 175rpx;
+    background-color: #ffffff;
+}
+
+.sign-desc-no-complete {
+    color: #4b4b4b;
+    font-weight: 100;
+    font-size: 38rpx;
+    margin-top: 25rpx;
+}
+
+.sign-no-complete-btn {
+    width: 100%;
+    margin-top: 60rpx;
+    padding: 15rpx 0;
+    color: #000000;
+    font-size: 62rpx;
+    text-align: center;
+    border-top: 1px solid #979797;
+}
+
+.sign-fail-title {
+    font-weight: bold;
+    color: #000000;
+    font-size: 46rpx;
+}

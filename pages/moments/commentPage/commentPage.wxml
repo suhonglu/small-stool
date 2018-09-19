@@ -1,0 +1,52 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<view class="empty-tip" wx:if="{{!hasContent}}">
+    <view class="empty-pic">
+        <image src="../../../src/img/pic_nothing.png"></image>
+    </view>
+    <text class="empty-txt">
+    这里一片荒芜，快来留点啥
+  </text>
+</view>
+<view class="commentList" wx:if="{{hasContent}}">
+    <view bindtap="{{commentItem.user_data.mid===userInfo.mid?'handleDelete':'handleInpReply'}}" class="commentItem" data-commentIndex="{{commentIdx}}" data-commentid="{{commentItem.id}}" data-fakeCommentid="{{commentItem.fakeID}}" wx:for="{{commentList}}" wx:for-index="commentIdx" wx:for-item="commentItem" wx:key="commentIdx">
+        <view class="top_triangle-icon" wx:if="{{commentItem.top}}">
+            <text>顶</text>
+        </view>
+        <image catchtap="handleAvatarClick" class="comment-user-avatar" data-gid="{{gid}}" data-mid="{{commentItem.user_data.mid}}" data-nick="{{commentItem.user_data.nick}}" src="{{commentItem.user_data.hurl}}"></image>
+        <view class="commentItem-info">
+            <view class="comment-user-name">
+                <text class="comment-user" style="color: {{commentItem.user_data.user_v?'red':''}}">{{commentItem.user_data.nick}}</text>
+                <text class="comment-text" wx:if="{{commentItem.to_user_data}}"> 回复 <text class="comment-user" style="color: {{commentItem.to_user_data.user_v?'red':''}}">{{commentItem.to_user_data.nick}}</text>
+                </text>
+            </view>
+            <view class="comment-post-date">{{commentItem.postTime}}</view>
+            <text class="comment-content-text">{{commentItem.txt}}</text>
+        </view>
+    </view>
+    <view wx:if="{{hasContent}}">
+        <view bindtap="onReachBottom" class="loading" wx:if="{{reachBottomFetchFail&&hasNext}}">点击加载更多</view>
+        <view class="loading" wx:elif="{{hasNext}}">正在加载...</view>
+        <view class="loaded-all" wx:else>— 留住我们共同的记忆 —</view>
+    </view>
+</view>
+<form bindreset="formReset" bindsubmit="submitComment" class="" wx:if="{{isCommentBoxShow}}">
+    <view class="post-box">
+        <view class="post-input-box">
+            <input bindconfirm="submitComment" bindinput="handleInput" class="input-box" confirmType="send" name="comment" placeholder="留下您的神语录吧(140字以内)" type="text"></input>
+        </view>
+        <button class="post-btn-box" formType="submit">
+            <span>发送</span>
+        </button>
+    </view>
+</form>
+<form bindreset="formReset" bindsubmit="submitComment" bindtap="handleHideReplyKeyboard" class="replyBoxContainer" wx:if="{{isCommentReplyBoxShow}}">
+    <view catchtap="disable" class="post-box">
+        <view class="post-input-box">
+            <input bindconfirm="submitComment" bindinput="handleInput" class="input-box" confirmType="send" focus="true" name="comment" placeholder="{{commentInpPlaceHolder}}" type="text"></input>
+        </view>
+        <button class="post-btn-box" formType="submit">
+            <span>发送</span>
+        </button>
+    </view>
+</form>
+<template is="xng-toast" data="{{toast:toast}}"></template>

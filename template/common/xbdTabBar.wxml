@@ -1,0 +1,10 @@
+<template name="xng-tab-bar">
+    <view class="tab-bar">
+        <navigator class="tab-bar-item {{current==0?'tab-bar-item-current':''}}" redirect="true" url="../../../pages/group/feedFlowPage/index">
+      小板凳
+    </navigator>
+        <navigator class="tab-bar-item {{current==1?'tab-bar-item-current':''}}" redirect="true" url="../../../pages/group/albumPage/index">
+      相册
+    </navigator>
+    </view>
+</template>

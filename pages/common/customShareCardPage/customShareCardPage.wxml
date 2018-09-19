@@ -1,0 +1,7 @@
+<view class="share-card-box">
+    <input bindinput="handleInput" class="share-card-box__desc-input" placeholder="{{videoInfo.shareInfo.desc}}" type="text"></input>
+    <view class="share-card-box__poster-img">
+        <image mode="widthFix" src="{{videoInfo.shareInfo.img}}"></image>
+    </view>
+    <button class="share-card-box__share-button" openType="share">分享给好友</button>
+</view>

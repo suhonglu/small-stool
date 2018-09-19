@@ -1,0 +1,129 @@
+@import "signDialog/signDialog.wxss";
+
+page {
+}
+
+.nav-bar-mid {
+    color: #333;
+}
+
+.page {
+}
+
+.icon {
+    width: 44rpx;
+    height: 44rpx;
+    vertical-align: sub;
+    background: transparent;
+    margin-right: 20rpx;
+}
+
+.cell {
+    border-top: 1rpx solid #bebebe;
+    padding: 0 30rpx;
+}
+
+.head-cell {
+    line-height: 84rpx;
+    padding: 0 40rpx;
+    font-weight: bold;
+}
+
+.head-cell__month {
+    color: #ff1d1d;
+}
+
+.head-cell__title {
+    color: #ffb600;
+}
+
+.static-cell {
+    line-height: 80rpx;
+    font-weight: bold;
+    font-size: 30rpx;
+}
+
+.tips-cell {
+    padding: 40rpx 30rpx;
+}
+
+.tips-cell__title {
+    line-height: 64rpx;
+    color: #686868;
+    font-weight: bold;
+    margin-bottom: 16rpx;
+}
+
+.tips-cell__content {
+    padding: 0 80rpx;
+    color: #5d5d5d;
+    font-size: 24rpx;
+    line-height: 34rpx;
+}
+
+.tips-item {
+    margin: 6rpx 0;
+}
+
+.calendar-cell {
+    padding: 0 0 16rpx;
+}
+
+.date-switcher {
+    margin: 0 auto;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.date-switcher .fa {
+}
+
+.switch-arrow {
+    padding: 0rpx 80rpx;
+    font-size: 42rpx;
+    vertical-align: top;
+    line-height: 80rpx;
+}
+
+.calendar {
+    width: 728rpx;
+    margin: 0 auto;
+}
+
+.calendar__weekList {
+    line-height: 70rpx;
+    color: #676767;
+    display: flex;
+    justify-content: space-around;
+    font-size: 28rpx;
+}
+
+.calendar__dateList {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.calendar__dateItem {
+    margin: 20rpx;
+    line-height: 60rpx;
+    width: 60rpx;
+    text-align: center;
+    border: 1rpx solid #909090;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.disable-date {
+    border-style: dashed;
+    color: #939393;
+}
+
+.signed-date {
+    background-color: #ffba01;
+}
+
+.unsigned-date {
+}

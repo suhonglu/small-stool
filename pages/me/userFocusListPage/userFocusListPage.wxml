@@ -1,0 +1,5 @@
+<import src="../../../template/common/xbdPersonList.wxml"></import>
+<template is="xbd-person-list" data="{{...personList}}"></template>
+<view class="loaded-all" wx:if="{{!hasNext}}">— 留住我们共同的记忆 —</view>
+<view class="loading" wx:elif="{{isFetching}}">正在加载...</view>
+<view bindtap="onReachBottom" class="loading" wx:else>点击加载更多...</view>

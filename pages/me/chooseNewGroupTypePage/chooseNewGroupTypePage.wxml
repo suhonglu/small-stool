@@ -1,0 +1,20 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="type-list">
+            <button bindtap="{{item.onTap}}" class="type-item" hoverClass="type-item-hovor" openType="{{item.hasShareFn?'share':''}}" style="background-color: {{item.bgcolor}}; color: {{item.fontColor}}" wx:for="{{types}}" wx:key="name">
+                <image class="blur-mask" mode="aspectFill" src="{{item.bgSrc}}"></image>
+                <view class="type-item__contentWrapper">
+                    <view>
+                        <view class="type-item__title">
+                            <text class="{{item.icoClass}}" wx:if="{{item.icoClass}}"></text>
+            {{item.name}}
+          </view>
+                        <view class="type-item__desc">{{item.desc}}</view>
+                    </view>
+                </view>
+            </button>
+        </view>
+    </button>
+</form>
+<template is="xng-toast" data="{{toast:toast}}"></template>

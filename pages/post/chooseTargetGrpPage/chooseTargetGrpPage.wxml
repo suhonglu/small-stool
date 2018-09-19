@@ -1,0 +1,57 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="groupPickerCard">
+            <view class="weui-tab">
+                <view class="weui-navbar">
+                    <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" id="{{index}}" wx:for="{{tabs}}" wx:key="*this">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+                </view>
+                <swiper circular bindchange="handleSwipeSwiper" class="weui-tab__panel" current="{{activeIndex}}">
+                    <swiper-item>
+                        <scroll-view enableBackToTop scrollY bindscrolltolower="onScrollViewReachBottom" class="weui-tab__content" lowerThreshold="0">
+                            <view bindtap="onBuildGroupBtnTap" class="buildGrpTip">没有喜欢的相册?? 点这里 <strong>新建</strong> 一个吧</view>
+                            <view class="group-list">
+                                <view bindtap="onGrpSelected" class="group-list-item" data-grpid="{{groupItem.id}}" hoverClass="_weui-cell_active" wx:if="{{groupItem.type!==10}}" wx:for="{{privateGroupList}}" wx:for-index="idx" wx:for-item="groupItem" wx:key="idx">
+                                    <view class="group-list-item__hd">
+                                        <image src="{{groupItem.g_url}}"></image>
+                                    </view>
+                                    <view class="group-list-item__bd">
+                                        <view class="commonGrpName">{{groupItem.name||groupItem.id}}</view>
+                                        <open-data class="wxGrpName" openGid="{{groupItem.opengid}}" type="groupName" wx:if="{{groupItem.opengid}}"></open-data>
+                                    </view>
+                                    <view class="group-list-item__radio">
+                                        <image class="checkbox" src="{{groupItem.id===gid?'../../../src/img/group/icon_select.png':'../../../src/img/group/icon_select_normal.png'}}"></image>
+                                    </view>
+                                </view>
+                            </view>
+                        </scroll-view>
+                    </swiper-item>
+                    <swiper-item>
+                        <scroll-view enableBackToTop scrollY bindscrolltolower="onScrollViewReachBottom" class="weui-tab__content" lowerThreshold="0">
+                            <view bindtap="onBuildGroupBtnTap" class="buildGrpTip">没有喜欢的相册?? 点这里 <strong>新建</strong> 一个吧</view>
+                            <view class="group-list">
+                                <view bindtap="onGrpSelected" class="group-list-item" data-grpid="{{groupItem.id}}" hoverClass="_weui-cell_active" wx:if="{{groupItem.type!==10}}" wx:for="{{publicGroupList}}" wx:for-index="idx" wx:for-item="groupItem" wx:key="idx">
+                                    <view class="group-list-item__hd">
+                                        <image src="{{groupItem.g_url}}"></image>
+                                    </view>
+                                    <view class="group-list-item__bd">{{groupItem.name||groupItem.id}}</view>
+                                    <view class="group-list-item__radio">
+                                        <image class="checkbox" src="{{groupItem.id===gid?'../../../src/img/group/icon_select.png':'../../../src/img/group/icon_select_normal.png'}}"></image>
+                                    </view>
+                                </view>
+                            </view>
+                        </scroll-view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+    </button>
+</form>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<template is="xng-action-sheet" data="{{actionSheet:actionSheet}}"></template>

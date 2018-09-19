@@ -1,0 +1,26 @@
+<template name="sign-dialog">
+    <view catchtap="closeSignDialog" class="sign-dialog-container">
+        <view class="dialog-content">
+            <block wx:if="{{state>=10}}">
+                <view class="sign-title">{{state===10?'还差一步完成签到':'今天的任务已经完成'}}</view>
+                <image class="sign-dialog-icon" src="{{iconUrl}}"></image>
+                <view class="sign-desc-con">
+                    <view class="sign-desc-complete">第一步：领取签到卡片链接（已完成）</view>
+                    <view class="sign-desc-complete">
+            第二步：分享链接到朋友圈
+            <text class="sign-no-complete" wx:if="{{state===10}}">（未完成）</text>
+                        <block wx:else>（已完成）</block>
+                    </view>
+                </view>
+                <view catchtap="closeSignDialog" class="sign-share-btn">{{state===10?'现在就去分享':'我知道了'}}</view>
+            </block>
+            <block wx:else>
+                <image class="sign-dialog-icon-no" src="{{iconUrl}}"></image>
+                <view class="sign-fail-title" wx:if="{{state===1}}">签到失败</view>
+                <view class="sign-desc-no-complete">{{state===1?'哎呀，漏签了～':'咦，还没开始～'}}</view>
+                <view class="sign-desc-no-complete">{{state===1?'不要灰心，坚持下去！(๑•̀ㅂ•́)و✧':'耐心等待吧 (●ﾟωﾟ●)'}}</view>
+                <view catchtap="closeSignDialog" class="sign-no-complete-btn">我知道了</view>
+            </block>
+        </view>
+    </view>
+</template>

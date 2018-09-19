@@ -1,0 +1,191 @@
+page {
+}
+
+.nav-bar {
+    background: transparent;
+    position: initial;
+}
+
+.nav-bar-mid {
+    color: #000;
+}
+
+.nav-bar-right-text {
+    box-shadow: none;
+}
+
+.content-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.background-img {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.main-part {
+    margin-top: 74%;
+    padding: 30px 50px;
+    font-size: 18px;
+    color: #ffffff;
+    font-family: PingFangSC-Regular;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-align: left;
+    position: relative;
+}
+
+.owner__avatar {
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+}
+
+.owner__avatar image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.btns-group-v {
+    text-align: center;
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    left: 0;
+}
+
+.btns-group-h {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    line-height: 40px;
+    text-align: center;
+}
+
+.btns-group-h .entry-btn {
+    width: 5em;
+    background-color: rgba(255,255,255,.36);
+    border-right: 2px solid rgba(255,255,255,.36);
+    line-height: 45px;
+}
+
+.btns-group-h .share-btn {
+    flex: 1;
+    color: white;
+    background-color: rgba(255,255,255,.36);
+}
+
+.btns-group-v .btn {
+    margin: 4px auto 10px;
+    line-height: 45px;
+    width: 250px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #333333;
+    letter-spacing: 0;
+    text-align: center;
+    background: #ffee3b;
+    box-shadow: 0 6px 13px 0 rgba(243,209,72,0.60);
+    border-radius: 50px;
+    padding: 0;
+}
+
+.btns-group-v .entry-btn {
+    color: white;
+    background-color: rgba(255,255,255,.28);
+    box-shadow: none;
+}
+
+.share-btn {
+    background: transparent;
+    border-radius: 0;
+}
+
+.card-content__title {
+    line-height: 26px;
+}
+
+.card-content__title__owner {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.card-content__main {
+}
+
+.exchange-btn {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 14px;
+}
+
+.bg-music-btn {
+    position: fixed;
+    background: rgba(0,0,0,.7);
+    width: 26px;
+    border-radius: 50%;
+    line-height: 26px;
+    text-align: center;
+    border: 1px solid white;
+    color: white;
+    right: 10px;
+    top: 10px;
+}
+
+.switch-btn {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    line-height: 20px;
+    color: white;
+    background: rgba(0,0,0,.7);
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 0 6px;
+}
+
+.theme-switcher {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.themeList {
+    overflow: auto;
+    width: 100%;
+}
+
+.themeItem {
+    float: left;
+    margin: 4px 10px;
+    border: 4px solid #fff;
+    line-height: 26px;
+    text-align: center;
+    background: white;
+}
+
+.themeItem__poster {
+    width: 100px;
+    vertical-align: top;
+}
+
+.themeItem__title {
+}

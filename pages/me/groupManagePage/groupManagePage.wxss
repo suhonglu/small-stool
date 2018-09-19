@@ -1,0 +1,248 @@
+page {
+    background: #eee;
+}
+
+.weui-cell_access {
+    background: white;
+}
+
+.vertical-layout {
+    display: block;
+}
+
+.vertical-layout .weui-cell__ft {
+    text-align: left;
+}
+
+.weui-cell_switch .weui-cell__ft {
+    position: relative;
+}
+
+.weui-cell_switch .switch-mask {
+    height: 32px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: .7;
+    background: white;
+}
+
+.weui-cell__bd {
+    font-size: 16px;
+}
+
+.weui-cell__bd_grpName {
+    flex: none;
+    margin-right: 10px;
+}
+
+.weui-cell__ft_grpName {
+    flex: 1;
+    line-height: 22px;
+    position: relative;
+    height: 22px;
+}
+
+.weui-cell__ft_grpName open-data {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+}
+
+.weui-cell__ft_grpName .backUpWord {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+}
+
+.weui-cell__ft {
+    font-size: 14px;
+}
+
+.nav-bar-mid {
+    color: #333;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.groupMemberList-wrapper {
+    padding: 74px 15px 10px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.moreMemberEntry {
+    text-align: center;
+    color: #999;
+}
+
+.moreMemberEntry::after {
+    content: '';
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #c8c8cd;
+    border-style: solid;
+    transform: matrix(.71,.71,-.71,.71,0,0);
+    position: relative;
+    top: -1px;
+}
+
+.allMemberListCard-mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 30000;
+    padding: 24px 10px 10px;
+}
+
+.allMemberListCard {
+    background: white;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 10px;
+    box-sizing: border-box;
+}
+
+.close-card-icon {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    transform: rotateZ(45deg);
+    width: 34px;
+    height: 34px;
+    background-color: transparent;
+}
+
+.groupMemberList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.groupMemberItem {
+    width: 20%;
+    padding: 0 5px 15px 5px;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.owner-mark {
+    position: absolute;
+    background: #ffe700;
+    font-size: 10px;
+    padding: 0 4px;
+    border-radius: 6px;
+    line-height: 12px;
+    right: 0;
+}
+
+.member-nick {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.member-avatar,.add-btn,.kick-btn {
+    width: 100%;
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
+    height: 0;
+    padding-top: 100%;
+}
+
+.add-btn,.kick-btn {
+    border: 1px solid lightgray;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.otherModule {
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+
+.bars-group {
+    margin-top: 20px;
+    background: #f0f0f0;
+    border-top: 1px solid #d9d9d9;
+}
+
+.bars-group:last-of-type {
+}
+
+.bar-container:active {
+    background: #cecece;
+}
+
+.bar-container {
+    padding: 10px 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 14px;
+    line-height: 30px;
+    display: flex;
+    background: white;
+}
+
+.bar-container-main {
+    float: left;
+    width: 100%;
+}
+
+.bar-container-main-title {
+    font-size: 16px;
+}
+
+.bar-container-main-content {
+    color: #a6a6a6;
+}
+
+.bar-container-main-horizontal .bar-container-main-title {
+    float: left;
+}
+
+.bar-container-main-vertical .bar-container-main-content {
+    line-height: 18px;
+}
+
+.bar-container-main-horizontal .bar-container-main-content {
+    float: right;
+}
+
+.bar-container-entryArrow {
+    float: right;
+    margin-left: 10px;
+}
+
+.bar-container-entryArrow image {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    transform: rotate(180deg);
+    background: transparent;
+}
+
+.pub-desc {
+    padding: 0px 15px 10px;
+    background: white;
+    font-size: 13px;
+    color: #999;
+}

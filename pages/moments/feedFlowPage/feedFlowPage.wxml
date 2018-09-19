@@ -1,0 +1,219 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngDialog.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<import src="../../../template/common/xbdBanner.wxml"></import>
+<import src="../../../template/common/tiaSignalCard.wxml"></import>
+<import src="../../../template/common/xngImgCard.wxml"></import>
+<template is="tia-signal-card" data="{{signalCard:signalCard}}" wx:if="{{!signalCard.hidden}}"></template>
+<template is="xng-img-card" data="{{imgCard:imgCard}}" wx:if="{{!imgCard.hidden}}"></template>
+<template is="xng-dialog" data="{{...dialog}}" wx:if="{{!dialog.hidden}}"></template>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<template is="xng-action-sheet" data="{{actionSheet:actionSheet}}"></template>
+<view catchtap="handleHideGuideCard" class="guide-card" wx:if="{{neverPostMoment}}">
+    <image class="guide-card_arrow" src="../../../src/img/feed/arrow.png"></image>
+    <view class="guide-card_tip">留住我们共同的记忆</view>
+</view>
+<view class="{{'pageWrapper '+(isAlbumGrp?'albumGrp':'')+(isTiaGroup?'tiaGrp':'')+(isPersonalGrp?'personalGrp':'')}}">
+    <template is="xng-nav-bar" data="{{...navBar}}" wx:if="{{groupInfo.type!==undefined}}"></template>
+    <form reportSubmit bindsubmit="tplMsgFormSubmit">
+        <button class="tplMsgFormBtn" formType="submit">
+            <view class="content">
+                <view class="page-head">
+                    <view class="head-top">
+                        <view class="summary">
+                            <view bindtap="onGroupManageEntryTap" class="summary-title">
+                                <block wx:if="{{groupInfo.type===1}}">
+                                    <view class="shareBindGrpCell">
+                                        <view class="backUpWord" wx:if="{{shouldBackUpWordShow}}">{{groupInfo.name}}</view>
+                                        <open-data openGid="{{groupInfo.opengid}}" type="groupName"></open-data>
+                                    </view>
+                                    <view class="group_tag" wx:if="{{groupInfo.groupTag}}">
+              {{groupInfo.groupTag}}
+            </view>
+                                </block>
+                                <view wx:else>
+            {{groupInfo.name}}
+            <view class="group_tag" wx:if="{{groupInfo.groupTag}}">
+              {{groupInfo.groupTag}}
+            </view>
+                                </view>
+                            </view>
+                            <view bindtap="onGroupManageEntryTap" class="summary-contentInfo">
+          人数: {{groupInfo.userCount}}
+          内容数: {{groupInfo.contCount}}
+        </view>
+                            <view bindtap="handleUnfoldDesc" class="summary-subtitle" style="display: {{isDescBoxFold?'-webkit-box':'block'}}">
+                                <text>{{groupInfo.desc}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="topTabs" wx:if="{{tabs.length}}">
+                    <view bindtap="tabClick" class="topTab {{currentAction===item.ac?'topTab-active':''}}" data-action="{{item.ac}}" id="{{index}}" wx:for="{{tabs}}" wx:key="ac">
+                        <view class="topTab__title">{{item.name}}</view>
+                        <view class="topTab__slider"></view>
+                    </view>
+                </view>
+                <template is="xbd-banner" data="{{...banner}}" wx:if="{{banner}}"></template>
+                <view class="page-content">
+                    <view class="empty-tip" wx:if="{{!hasContentMap[currentAction]&&hasLoadMap[currentAction]}}">
+                        <view class="empty-pic">
+                            <image bindtap="onPostBtnTap" src="../../../src/img/pic_nothing.png"></image>
+                        </view>
+                        <text class="empty-txt">
+        这里一片荒芜，快来发点啥
+      </text>
+                        <image class="empty-pic_arrow" src="../../../src/img/feed/arrow_2.jpg"></image>
+                    </view>
+                    <block wx:else>
+                        <view class="feed-container fade_in" wx:for="{{feedListMap[currentAction]}}" wx:for-index="feedIdx" wx:for-item="feedItem" wx:key="id">
+                            <view class="feed-main">
+                                <view class="item-header">
+                                    <view bindtap="handleAvatarClick" class="user-baseInfo" data-gid="{{gid}}" data-mid="{{feedItem.user_data.mid}}" data-nick="{{feedItem.user_data.nick}}">
+                                        <image lazyLoad class="user-avata" src="{{feedItem.user_data.hurl}}"></image>
+                                        <view class="user-nick">
+                                            <text>{{feedItem.user_data.nick}}</text>
+                                            <text catchtap="onTagTap" class="user-nick_tag" wx:for="{{feedItem.user_data.user_tag}}" wx:for-item="user_tag" wx:key="idx">{{user_tag||'东方不败'}}</text>
+                                        </view>
+                                    </view>
+                                    <view class="user-relate">
+                                        <image lazyLoad bindtap="handleOperate" class="optBtn" data-isFeedOwner="{{feedItem.user_data.mid===userInfo.mid}}" data-isTopped="{{feedItem.top}}" data-momid="{{feedItem.id}}" src="../../../src/img/ellipsis-gray.png"></image>
+                                    </view>
+                                </view>
+                                <view class="item-content">
+                                    <view class="content-desc">
+              {{feedItem.txt}}
+            </view>
+                                    <view class="content-desc" wx:if="{{feedItem.rank}}">
+              ⭐ 总排名: {{feedItem.rank===-1?'还未上榜哦, 快分享出去让朋友点赞吧':feedItem.rank}}
+            </view>
+                                    <view class="content-desc" wx:if="{{feedItem.rank}}"></view>
+                                    <view class="content-desc" wx:if="{{feedItem.diff}}">
+              📶 距上一名还差: {{feedItem.diff}}<image lazyLoad class="content-desc__inline-icon" src="../../../src/img/feed/icon_Good_B.png"></image>
+                                    </view>
+                                    <view class="content-pics" style="margin-right:{{feedItem.img_data.length===1?0:-1}}px;" wx:if="{{feedItem.img_data[0].type!=='video'}}">
+                                        <image binderror="onPicErr" bindload="onPicLoad" catchtap="onPhotoTap" class="pics-item image-box" data-feedIndex="{{feedIdx}}" data-momid="{{feedItem.id}}" data-photoIndex="{{photoIdx}}" data-qid="{{imgItem.qid}}" data-src="{{imgItem.url}}" lazyLoad="true" mode="{{feedItem.img_data.length===1?imgItem.width<windowWidth/2?'aspectFill':'aspectFit':'aspectFill'}}" src="{{imgItem.isPicErr?'../../../src/image/image_error.png':imgItem.small_url}}" style="display: {{feedItem.img_data.length===1?'block':'inline-block'}}; max-height: {{feedItem.img_data.length===1?imageMaxHeight:1000}}px;width: {{feedItem.img_data.length===1?imgItem.width<windowWidth/2?imageFullWidth:imgItem.width:feedItem.img_data.length===2||feedItem.img_data.length===4?imageHalfWidth:imageBoxWidth}}px; height:{{feedItem.img_data.length===1?imgItem.height:feedItem.img_data.length===2||feedItem.img_data.length===4?imageHalfWidth:imageBoxWidth}}px;margin:{{feedItem.img_data.length===1?'0 auto':'1px 1px 0 0'}}" wx:for="{{feedItem.img_data}}" wx:for-index="photoIdx" wx:for-item="imgItem" wx:key="id">
+                                            <text class="type-tag" wx:if="{{imgItem.type==='gif'}}">动图</text>
+                                            <text class="type-tag" wx:elif="{{feedItem.img_data.length===1&&imgItem.width<windowWidth/2}}">长图</text>
+                                        </image>
+                                    </view>
+                                    <block wx:else>
+                                        <view catchtap="onVideoTap" class="content-video" data-aid="{{feedItem.aid}}" data-feedIndex="{{feedIdx}}" data-gid="{{feedItem.gid}}" data-lid="{{feedItem.lid}}" data-momid="{{feedItem.id}}" data-momtype="{{feedItem.type}}" data-photoIndex="{{photoIdx}}" data-qid="{{imgItem.qid}}" data-src="{{imgItem.r_url}}" style="max-height: {{imageMaxHeight}}px;width: {{feedItem.img_data[0].width}}px; height:{{feedItem.img_data[0].height}}px;" wx:for="{{feedItem.img_data}}" wx:for-index="photoIdx" wx:for-item="imgItem" wx:key="id">
+                                            <image binderror="onPicErr" bindload="onPicLoad" class="feed-video" data-feedIndex="{{feedIdx}}" data-momid="{{feedItem.id}}" data-photoIndex="{{photoIdx}}" lazyLoad="true" mode="aspectFit" src="{{imgItem.isPicErr?'../../../src/image/image_error.png':imgItem.small_url}}"></image>
+                                            <image lazyLoad class="play-icon" src="../../../src/img/icon_play.png"></image>
+                                            <text class="type-tag" wx:if="{{feedItem.ctype==='album'}}">影集</text>
+                                        </view>
+                                    </block>
+                                </view>
+                                <view bindtap="handleFlexStoryText" class="{{'albumStory '+(flexStoryIdArray[feedItem.id]?'unfold':'')}}" data-itemID="{{feedItem.id}}" wx:if="{{feedItem.story}}">
+            {{feedItem.story}}
+          </view>
+                                <view class="item-btnGroup">
+                                    <button class="btnGroup-item share-btn" data-feedIndex="{{feedIdx}}" data-gid="{{feedItem.gid}}" data-isNewPost="{{newestPostMomID==feedItem.id}}" data-itemID="{{feedItem.id}}" data-momid="{{feedItem.id}}" data-shareDesc="{{feedItem.share_desc||feedItem.txt}}" data-shareSrc="{{feedItem.img_data[0].url}}" data-shareSrcType="{{feedItem.img_data[0].type}}" openType="share" wx:if="{{shouldShowFeedShareBtn}}">
+                                        <text class="favor_num">{{feedItem.share_count||'分享'}}</text>
+                                        <image lazyLoad class="{{newestPostMomID==feedItem.id||shakeController[feedItem.id]?'icoShake':''}}" src="../../../src/img/feed/icon_share.jpg"></image>
+                                    </button>
+                                    <view bindtap="handleFavor" class="btnGroup-item favor-btn" data-feedIndex="{{feedIdx}}" data-momid="{{feedItem.id}}">
+                                        <text class="favor_num">{{feedItem.favor_data.total||'点赞'}}</text>
+                                        <image lazyLoad class="{{feedItem.favor_data.shouldAnimatePlay?'icoFlex':''}}" src="{{feedItem.favor_data.has_favor?'../../../src/img/feed/icon_Good_B.png':'../../../src/img/feed/icon_Good_A.png'}}"></image>
+                                    </view>
+                                    <view class="btnGroup-item" wx:if="{{isAlbumGrp?feedItem.uv:feedItem.pv}}">
+                                        <text class="favor_num">{{isAlbumGrp?feedItem.uv:feedItem.pv}}</text>
+                                        <image lazyLoad class="uv-ico" src="../../../src/img/feed/icon_read.png"></image>
+                                    </view>
+                                    <view class="relate-time">
+              {{feedItem.postTime}}
+            </view>
+                                    <view bindtap="onRecommendEntryTap" class="recommend-icon" data-chid="{{feedItem.chid}}" data-momid="{{feedItem.id}}" wx:if="{{feedItem.st===10}}">
+                                        <text>精</text>
+                                    </view>
+                                    <view class="recommend-icon top-icon" wx:if="{{feedItem.top}}">
+                                        <text>顶</text>
+                                    </view>
+                                </view>
+                                <view class="hot-comments-container" wx:if="{{!(feedItem.comments_st===2)}}">
+                                    <view class="hot-comments-list" wx:if="{{feedItem.comments_some.length&&feedItem.comments_st!==1}}">
+                                        <view bindtap="{{hotComment.user_data.mid===userInfo.mid?'deleteComment':'handleInpReply'}}" class="comment-content" data-commentIndex="{{idx}}" data-commentid="{{hotComment.id}}" data-fakeCommentid="{{hotComment.fakeID}}" data-feedIndex="{{feedIdx}}" data-momid="{{feedItem.id}}" wx:for="{{feedItem.comments_some}}" wx:for-index="idx" wx:for-item="hotComment" wx:key="idx">
+                                            <view class="recommend-icon top-icon" wx:if="{{hotComment.top}}">
+                                                <text>顶</text>
+                                            </view>
+                                            <text catchtap="handleAvatarClick" class="comment-user" data-gid="{{gid}}" data-mid="{{hotComment.user_data.mid}}" data-nick="{{hotComment.user_data.nick}}" style="color: {{hotComment.user_data.user_v?'red':''}}">{{hotComment.user_data.nick}}</text>
+                                            <span class="comment-text" wx:if="{{hotComment.to_user_data}}">
+                                                <text> 回复 </text>
+                                                <text catchtap="handleAvatarClick" class="comment-user" data-gid="{{gid}}" data-mid="{{hotComment.to_user_data.mid}}" data-nick="{{hotComment.to_user_data.nick}}" style="color: {{hotComment.to_user_data.user_v?'red':''}}">{{hotComment.to_user_data.nick}}</text>
+                                            </span>: 
+                <text class="comment-text">{{hotComment.txt}}</text>
+                                        </view>
+                                    </view>
+                                    <view class="commentBtns-wrapper">
+                                        <view bindtap="handleMoreComment" class="moreBtn" data-feedIndex="{{feedIdx}}" data-momid="{{feedItem.id}}" wx:if="{{feedItem.comments_count}}">
+                全部评论
+                <text>{{'('+feedItem.comments_count+')'||''}}</text>
+                                        </view>
+                                        <view bindtap="handleInpComment" class="writeBtn" data-feedIndex="{{feedIdx}}" data-momid="{{feedItem.id}}">
+                                            <image lazyLoad src="../../../src/img/feed/icon_Comment.png" style="vertical-align:text-bottom"></image>
+                                            <text>写评论</text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view>
+                            <view class="loading" wx:if="{{!hasContentMap[currentAction]||hasContentMap[currentAction]&&hasNextMap[currentAction]&&!reachBottomFetchFailMap[currentAction]}}">正在加载...</view>
+                            <view bindtap="onReachBottom" class="loading" wx:elif="{{hasNextMap[currentAction]}}">点击加载更多</view>
+                            <view class="loaded-all" wx:elif="{{!hasNextMap[currentAction]}}">— 留住我们共同的记忆 —</view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view wx:if="{{groupInfo.type!==undefined}}">
+                <navigator class="postBigBtn" url="{{'/pages/me/myTiaHomeworkPage/myTiaHomeworkPage?gid='+gid}}" wx:if="{{isTiaGroup&&!groupInfo.nohomework}}">
+                    <view class="postBigBtn-main">
+                        <text class="fa fa-file-text-o"></text>
+                        <text class="plus">+</text>
+                        <view class="tip">交作业</view>
+                    </view>
+                </navigator>
+                <block wx:else>
+                    <view bindlongpress="handleNavToFullFnPostPage" bindtap="handlePostBtnTap" class="postBigBtn-middle" hoverClass="animated rubberBand" wx:if="{{isActivityGroup}}">
+                        <view class="postBigBtn-middle-main">
+                            <text class="{{isAlbumGrp?'fa fa-film':'fa fa-photo'}}"></text>
+                            <text class="plus">+</text>
+                            <view class="tip">参与</view>
+                        </view>
+                    </view>
+                    <view bindlongpress="handleNavToFullFnPostPage" bindtap="handlePostBtnTap" class="postBigBtn animated zoomInDown" wx:else>
+                        <view class="postBigBtn-main" hoverClass="animated rubberBand">
+                            <text class="{{isAlbumGrp?'fa fa-film':'fa fa-photo'}}"></text>
+                            <text class="plus">+</text>
+                            <view class="tip">{{isAlbumGrp?'发影集':'发图片'}}</view>
+                        </view>
+                    </view>
+                </block>
+                <navigator class="postBigBtn postBigBtn-2 postBigBtn-noPlus" url="{{'/pages/tia/tiaCourseListPage/tiaCourseListPage?gid='+gid}}" wx:if="{{isTiaGroup&&groupInfo.havelesson}}">
+                    <view class="postBigBtn-main">
+                        <text class="fa fa-graduation-cap"></text>
+                        <view class="tip">去上课</view>
+                    </view>
+                </navigator>
+            </view>
+        </button>
+    </form>
+</view>
+<view bindtap="handleHideKeyboard" bindtouchmove="handleHideKeyboard" class="post-form" wx:if="{{isCommentInpShow}}">
+    <view catchtap="emptyFn" class="protectErrorTouchArea"></view>
+    <form bindreset="formReset" bindsubmit="submitComment" class="">
+        <view catchtap="emptyFn" catchtouchmove="emptyFn" class="post-box">
+            <view class="post-input-box">
+                <input bindconfirm="submitComment" bindinput="handleInput" class="input-box" confirmType="send" focus="true" name="comment" placeholder="{{commentInpPlaceHolder}}" type="text" value="{{commentInp}}"></input>
+            </view>
+            <button class="post-btn-box" formType="submit" wx:if="{{commentLiveInp}}">
+                <span>发送</span>
+            </button>
+            <button bindtap="handleHideKeyboard" class="post-btn-box" wx:else>
+                <span>取消</span>
+            </button>
+        </view>
+    </form>
+</view>

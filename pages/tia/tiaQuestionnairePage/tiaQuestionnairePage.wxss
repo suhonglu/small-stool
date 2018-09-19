@@ -1,0 +1,130 @@
+page {
+    background-color: #efeff4;
+}
+
+.nav-bar-mid {
+    color: #333;
+}
+
+.page {
+    background-color: #efeff4;
+}
+
+.loading,.loaded-all {
+    background-color: #efeff4;
+}
+
+.cell {
+    margin-top: 10px;
+}
+
+.course-head {
+    font-size: 16px;
+    line-height: 44px;
+    color: #101010;
+    padding: 0 15px;
+}
+
+.course-list {
+}
+
+.course-list-item-container {
+    position: relative;
+    padding: 0 15px 18px;
+}
+
+.course-list-item {
+    position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 13px 1px rgba(51,51,51,.1);
+    padding: 10px;
+}
+
+.course-list-item.active {
+    background-color: rgba(255,231,0,.5);
+}
+
+.course-list-item__radio {
+    border: 10px solid transparent;
+    border-right: 10px solid yellowgreen;
+    border-bottom: 10px solid yellowgreen;
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
+.course-list-item__poster {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 4px;
+}
+
+.course-list-item__poster image {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.course-list-item__poster .play-icon {
+    width: 50%;
+    height: 50%;
+}
+
+.course-list-item__info {
+}
+
+.course-list-item__info-subInfo {
+    overflow: hidden;
+    line-height: 20px;
+    padding-bottom: 4px;
+}
+
+.course-list-item__info-state {
+    float: right;
+    width: 6em;
+    text-align: center;
+    color: #101010;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.course-item-state_1 {
+    background: #E5E5E5;
+    color: #101010;
+}
+
+.course-item-state_2 {
+    background: #ffe700;
+}
+
+.course-item-state_3 {
+    background: #6f6f6f;
+    box-shadow: -1px 2px 3px 0px rgba(0,0,0,1);
+    color: #fff;
+}
+
+.course-list-item__info-title {
+    font-size: 16px;
+    color: #333;
+    word-break: break-all;
+    line-height: 24px;
+}
+
+.course-list-item__info-time {
+    float: left;
+    font-size: 14px;
+    color: #666;
+}
+
+.course-emptyTip {
+    line-height: 30px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 13px 1px rgba(51,51,51,.1);
+    padding: 10px;
+}

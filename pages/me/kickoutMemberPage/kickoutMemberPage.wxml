@@ -1,0 +1,18 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}"></template>
+<view class="groupMemberList">
+    <view bindtap="onCheckMember" class="groupMemberItem" data-mid="{{groupMemberItem.user_data.mid}}" wx:for="{{groupMemberList}}" wx:for-index="idx" wx:for-item="groupMemberItem" wx:key="t">
+        <image class="checkbox" src="{{checkStateMap[groupMemberItem.user_data.mid]?'../../../src/img/group/icon_select.png':'../../../src/img/group/icon_select_normal.png'}}"></image>
+        <image class="member-avatar" src="{{groupMemberItem.user_data.hurl}}"></image>
+        <view class="member-nick">
+        {{groupMemberItem.user_data.nick}}
+      </view>
+    </view>
+    <view>
+        <view bindtap="onScrollViewReachBottom" class="loading" wx:if="{{reachBottomFetchFail&&hasNext}}">点击加载更多</view>
+        <view class="loading" wx:elif="{{hasNext!==false}}">正在加载...</view>
+        <view class="loaded-all" wx:else>— 留住我们共同的记忆 —</view>
+    </view>
+</view>
+<template is="xng-toast" data="{{toast:toast}}"></template>

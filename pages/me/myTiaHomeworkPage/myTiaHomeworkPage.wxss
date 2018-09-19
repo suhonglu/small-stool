@@ -1,0 +1,110 @@
+page {
+    background-color: #efeff4;
+}
+
+.nav-bar-mid {
+    color: #333;
+}
+
+.page {
+    background-color: #efeff4;
+}
+
+.loading,.loaded-all {
+    background-color: #efeff4;
+}
+
+.mission-list {
+}
+
+.mission-list-item-container {
+    position: relative;
+    padding: 18px 15px 0;
+}
+
+.mission-list-item {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 13px 1px rgba(51,51,51,.1);
+    padding: 10px;
+}
+
+.mission-list-item.active {
+    background-color: rgba(255,231,0,.5);
+}
+
+.mission-list-item__radio {
+    border: 10px solid transparent;
+    border-right: 10px solid yellowgreen;
+    border-bottom: 10px solid yellowgreen;
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
+.mission-list-item__poster {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 4px;
+}
+
+.mission-list-item__poster image {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.mission-list-item__poster .play-icon {
+    width: 50%;
+    height: 50%;
+}
+
+.mission-list-item__info {
+    flex: 1;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.mission-list-item__submitBtn {
+    display: flex;
+    width: 60px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mission-list-item__submitBtn image {
+    height: 34px;
+    width: 34px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+.mission-list-item__info-title {
+    font-size: 16px;
+    color: #333;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.mission-list-item__info-time {
+    font-size: 12px;
+    color: #666;
+    height: 16px;
+    line-height: 16px;
+}
+
+.sign-in-btn {
+    text-align: center;
+    background: #ffe700;
+    line-height: 20px;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-weight: bold;
+}

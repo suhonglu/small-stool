@@ -1,0 +1,29 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <view class="album-list">
+                <view bindtap="onAlbumSelected" class="album-list-item-container" data-lid="{{albumItem.lid}}" hoverClass="weui-cell_active" wx:if="{{albumItem.status===2}}" wx:for="{{albumList}}" wx:for-index="idx" wx:for-item="albumItem" wx:key="idx">
+                    <view class="{{albumItem.lid!==targetLid?'album-list-item':'album-list-item active'}}">
+                        <view catchtap="onVideoTap" class="album-list-item__poster" data-lid="{{albumItem.lid}}">
+                            <image mode="aspectFill" src="{{albumItem.url}}"></image>
+                            <image class="play-icon" src="../../../src/img/icon_play.png"></image>
+                        </view>
+                        <view class="album-list-item__info">
+                            <view class="album-list-item__info-title">{{albumItem.title}}</view>
+                            <view class="album-list-item__info-time">{{albumItem.time}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="onReachBottom" class="loading" wx:if="{{reachBottomFetchFail&&hasNext}}">点击加载更多</view>
+        <view class="loading" wx:elif="{{hasNext}}">正在加载...</view>
+        <view class="loaded-all" wx:else>— 留住我们共同的记忆 —</view>
+        <view class="{{targetLid?'bottomBar enable':'bottomBar'}}">
+            <view bindtap="{{targetLid?'handlePreviewAlbum':null}}" class="bottomBar-preview">预览</view>
+            <view bindtap="{{targetLid?'onPostBtnTap':null}}" class="bottomBar-send">发送</view>
+        </view>
+    </button>
+</form>

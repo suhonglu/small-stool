@@ -1,0 +1,129 @@
+.permission-container {
+    position: relative;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 50%;
+    width: 76%;
+}
+
+.permission-title {
+    position: relative;
+    width: 100%;
+    height: 18%;
+    text-align: center;
+    font-size: 17px;
+    color: #333333;
+    box-sizing: border-box;
+}
+
+.permission-line {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background-color: #e4e4e4;
+}
+
+.title-text {
+    position: relative;
+    font-weight: bold;
+    top: 30%;
+}
+
+.permission-main {
+    box-sizing: border-box;
+    padding-left: 8.5%;
+    padding-right: 8.5%;
+    width: 100%;
+    height: 64%;
+}
+
+.permission-img-text {
+    width: 100%;
+    height: 100%;
+    padding-top: 10%;
+    box-sizing: border-box;
+}
+
+.permission-btns {
+    width: 100%;
+    height: 18%;
+}
+
+.permission-btn {
+    width: 49%;
+    height: 97%;
+    font-size: 16px;
+    float: left;
+}
+
+.title-cancel {
+    font-weight: 400;
+}
+
+.title-done {
+    font-weight: 400;
+    color: #2ca213;
+}
+
+.permission-verline {
+    height: 97%;
+    width: 1px;
+    background-color: #e4e4e4;
+    float: left;
+}
+
+.permission-image {
+    height: 35px;
+    width: 35px;
+}
+
+.con-text {
+    text-align: left;
+}
+
+.permission-text {
+    text-align: left;
+    font-weight: 400;
+    color: #999999;
+    line-height: 25px;
+    font-size: 13px;
+}
+
+.permission-margin {
+    margin: 3% 0 3% 0;
+}
+
+.permission-android {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 8% 8% 2% 8%;
+}
+
+.permission-android-all {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.permission-android-title {
+    text-align: left;
+    font-size: 17px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.permission-android-main {
+    height: 20%;
+    width: 100%;
+}
+
+.permission-android-image {
+    height: 43px;
+    width: 43px;
+}
+
+.permission-android-btns {
+    width: 100%;
+    height: 20%;
+}

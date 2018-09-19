@@ -1,0 +1,56 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<view class="picture-wall-page">
+    <template is="xng-nav-bar" data="{{...navBar}}"></template>
+    <form reportSubmit bindsubmit="tplMsgFormSubmit">
+        <button class="tplMsgFormBtn" formType="submit">
+            <view bindscrolltolower="lower" class="photos-container">
+                <view bindtap="onTranshCanEntryTap" class="transh-can" wx:if="{{isOwner&&!inSelectMode}}">回收站</view>
+                <view class="empty-tip" wx:if="{{!hasContent}}">
+                    <view class="empty-pic">
+                        <image src="../../../src/img/pic_nothing.png"></image>
+                    </view>
+                    <text class="empty-txt">
+        这里一片荒芜，快来发点啥
+      </text>
+                </view>
+                <view class="photo-group" wx:for="{{photoGroups}}" wx:for-index="groupIdx" wx:for-item="groupItem" wx:key="displayTime">
+                    <view class="group-time" wx:if="{{!inSelectMode}}">— {{groupItem.displayTime}} —</view>
+                    <view class="group-time-selectM" wx:if="{{inSelectMode}}">
+                        <text class="group-time">{{groupItem.displayTime2}}</text>
+                        <view bindtap="onOneGroupSelect" class="selectall-btn" data-groupIdx="{{groupIdx}}">{{!groupItem.hasSelectAll?'全选':'取消全选'}}</view>
+                    </view>
+                    <view class="images-container">
+                        <view class="image-box" data-photo-index="{{idx}}" style="width:{{imageBoxWidth}}px; height:{{imageBoxWidth}}px" wx:for="{{groupItem.photos}}" wx:for-index="idx" wx:for-item="photo" wx:key="idx">
+                            <view catchtap="onCheckPhoto" class="tapArea" data-groupIdx="{{groupIdx}}" data-index="{{idx}}" wx:if="{{inSelectMode}}">
+                                <image class="checkbox" src="{{photo.isChecked?'../../../src/img/album/icon_select.png':'../../../src/img/album/icon_select_normal.png'}}"></image>
+                            </view>
+                            <image binderror="onPicErr" catchtap="onPhotoTap" class="image-box-image" data-groupIdx="{{groupIdx}}" data-index="{{idx}}" data-qid="{{photo.qid}}" data-src="{{photo.url}}" mode="aspectFill" src="{{photo.small_url}}"></image>
+                        </view>
+                    </view>
+                </view>
+                <view wx:if="{{hasContent}}">
+                    <view bindtap="onReachBottom" class="loading" wx:if="{{reachBottomFetchFail&&hasNext}}">点击加载更多</view>
+                    <view class="loading" wx:elif="{{hasNext}}">正在加载...</view>
+                    <view class="loaded-all" wx:else>— 留住我们共同的记忆 —</view>
+                </view>
+            </view>
+        </button>
+    </form>
+</view>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="bottom-tool-bar" style="bottom: {{inSelectMode?0:-50}}px">
+            <view bindtap="onSaveLocal" class="bottom-tool">
+                <image class="btnIco" src="../../../src/img/album/icon_download.png"></image>
+                <text>保存到手机</text>
+            </view>
+            <view bindtap="onSaveCloud" class="bottom-tool">
+                <image class="btnIco" src="../../../src/img/album/icon_upload.png"></image>
+                <text>收藏到小年糕</text>
+            </view>
+        </view>
+    </button>
+</form>

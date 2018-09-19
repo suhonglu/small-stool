@@ -1,0 +1,18 @@
+<template name="comment-input">
+    <view bindtap="{{handleHideKeyboard}}" bindtouchmove="{{handleHideKeyboard}}" class="post-form" wx:if="{{isCommentInpShow}}">
+        <view catchtap="{{emptyFn}}" class="protectErrorTouchArea"></view>
+        <form bindsubmit="{{handleSubmitComment}}" class="">
+            <view catchtap="{{emptyFn}}" class="post-box">
+                <view class="post-input-box">
+                    <input autoFocus adjustPosition="false" bindconfirm="{{handleSubmitComment}}" bindinput="{{handleInput}}" class="input-box" confirmType="send" name="comment" placeholder="{{commentInpPlaceHolder}}" type="text" value="{{commentInp}}"></input>
+                </view>
+                <button class="post-btn-box" formType="submit" wx:if="{{commentLiveInp}}">
+                    <span>发送</span>
+                </button>
+                <button bindtap="{{handleHideKeyboard}}" class="post-btn-box" wx:else>
+                    <span>取消</span>
+                </button>
+            </view>
+        </form>
+    </view>
+</template>

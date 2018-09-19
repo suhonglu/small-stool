@@ -1,0 +1,16 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="content">
+            <view class="content-wrapper">
+                <view class="ranking-list">
+      排行榜
+    </view>
+                <view bindtap="onRryAgainBtnClick">再来一次</view>
+                <button openType="share">分享</button>
+            </view>
+        </view>
+    </button>
+</form>
+<template is="xng-toast" data="{{toast:toast}}"></template>

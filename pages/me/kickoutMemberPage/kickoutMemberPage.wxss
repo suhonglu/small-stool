@@ -1,0 +1,46 @@
+.nav-bar {
+}
+
+.nav-bar-right-text {
+    padding: 0 27px;
+}
+
+.groupMemberList {
+    padding-top: 64px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.groupMemberItem {
+    padding: 0 20px;
+    display: flex;
+    line-height: 60px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.member-nick {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    flex: 1;
+}
+
+.member-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: auto 10px auto 0;
+}
+
+.member-kickBtn {
+    float: right;
+}
+
+image.checkbox {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #fff;
+    margin: auto 20px auto 0;
+}

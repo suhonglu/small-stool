@@ -1,0 +1,26 @@
+<template name="xng-dialog">
+    <view bindtap="{{handleHide}}" catchtouchmove="{{emptyFn}}" class="back-mask" style="display: {{hidden?'none':textarea?'initial':''}}">
+        <view catchtap="{{emptyFn}}" class="dialog-form">
+            <view class="dialog-header">
+                <view class="dialog-header__text">{{title}}</view>
+                <image bindtap="{{handleHide}}" class="dialog-header__closebtn" src="https://xngstatic.oss-cn-shenzhen.aliyuncs.com/mini_xbd/img/X.png" wx:if="{{closable}}"></image>
+            </view>
+            <view class="dialog-body">
+                <input bindinput="{{input.onInput}}" class="dialog-input" maxlength="{{input.maxLength}}" value="{{input.value}}" wx:if="{{input}}"></input>
+                <input autoFocus="true" bindconfirm="{{textarea.submitFn}}" bindinput="{{textarea.handleInput}}" catchtap="emptyFn" class="dialog-textarea" confirmType="send" maxlength="{{textarea.maxLength||50}}" name="comment" placeholder="{{textarea.placeholder}}" value="{{textarea.valueInp}}" wx:if="{{textarea}}"></input>
+                <text class="dialog-label" wx:if="{{label}}">{{label.value}}</text>
+                <scroll-view scrollY class="dialog-paragraph" wx:if="{{paragraph}}">
+                    <text>{{paragraph}}</text>
+                </scroll-view>
+                <view class="dialog-bodyList" style="text-align: left" wx:if="{{bodyList}}">
+                    <view wx:for="{{bodyList}}" wx:for-item="bodyItem" wx:key="index">{{bodyItem}}</view>
+                </view>
+            </view>
+            <view catchtap="{{handleHide}}" class="dialog-footer">
+                <button bindgetuserinfo="{{button.getUserInfoFn}}" bindtap="{{button.onTap}}" class="dialog-footer-btn {{!button.warning&&!button.primary?'default-btn':''}} {{button.warning?'warning-btn':''}} {{button.primary?'primary-btn':''}} {{button.operateBtn?'dialog-footer-mainBtn':'dialog-footer-subBtn'}}" openType="{{button.openType}}" sessionFrom="{{button.sessionFrom}}" style="{{button.style}}" type="{{button.primaryBtn?'primary':''}}" wx:for="{{buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+        {{button.name}}
+      </button>
+            </view>
+        </view>
+    </view>
+</template>

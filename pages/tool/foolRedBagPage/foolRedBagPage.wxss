@@ -1,0 +1,251 @@
+.container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.bgImg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 38rpx;
+    background: rgba(0,0,0,0.70);
+}
+
+.top-bar {
+    font-size: 28rpx;
+    color: #ffffff;
+    text-align: left;
+    line-height: 72rpx;
+    height: 68rpx;
+    overflow: hidden;
+}
+
+.top-bar__logo {
+    vertical-align: top;
+    width: 68rpx;
+    height: 68rpx;
+    margin-right: 10rpx;
+    border-radius: 50%;
+}
+
+.time-clock {
+    font-size: 28rpx;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 30rpx;
+    height: 30rpx;
+}
+
+.time-clock__text {
+    float: right;
+    margin-right: 25rpx;
+}
+
+.strong-num {
+    font-weight: bolder;
+    font-size: 34rpx;
+}
+
+.red-bag {
+    background: #cd533e;
+    border-radius: 12rpx;
+    width: 620rpx;
+    height: 795rpx;
+    margin: 20rpx auto 50rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.redBag-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 70rpx 0 46rpx;
+    text-align: center;
+}
+
+.avatar-wrapper {
+    margin-bottom: 15rpx;
+}
+
+.avatar {
+    vertical-align: top;
+    border: 1rpx solid #ffffff;
+    border-radius: 12rpx;
+    width: 98rpx;
+    height: 98rpx;
+}
+
+.rb-sender-wrapper {
+    margin-bottom: 9rpx;
+}
+
+.rb-sender {
+    font-weight: bold;
+    font-size: 34rpx;
+    color: #ebcd9b;
+    line-height: 48rpx;
+}
+
+.rb-normalword-wrapper {
+    margin-bottom: 33rpx;
+}
+
+.rb-normalword {
+    font-size: 28rpx;
+    color: #ebcd9b;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 40rpx;
+}
+
+.rb-mainword-wrapper {
+}
+
+.rb-mainword {
+    font-weight: bolder;
+    font-size: 48rpx;
+    color: #ebcd9b;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 67rpx;
+}
+
+.rb-mainword-wrapper {
+    margin-bottom: 60rpx;
+}
+
+.rb-mainword {
+    font-weight: bolder;
+    font-size: 48rpx;
+    color: #ebcd9b;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 67rpx;
+}
+
+.rb-score-wrapper {
+}
+
+.rb-score {
+    font-weight: bolder;
+    font-size: 32rpx;
+    color: #ebcd9b;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 65rpx;
+}
+
+.rb-score .strong-num {
+}
+
+.rb-openBtn {
+    background: #ebcd9b;
+    box-shadow: 0 11rpx 9rpx 5rpx rgba(127,50,50,0.20);
+    width: 180rpx;
+    height: 180rpx;
+    line-height: 180rpx;
+    border-radius: 100%;
+    font-weight: bold;
+    font-size: 90rpx;
+    color: #2f2f32;
+    letter-spacing: 0;
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.share-btn-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 90rpx;
+}
+
+.share-btn {
+    background: #ffe700;
+    border-radius: 100rpx;
+    width: 360rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-weight: bolder;
+    font-size: 32rpx;
+    color: #252321;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.resultBox-wrapper {
+    margin-top: 156rpx;
+}
+
+.resultBox-normalWord {
+    font-size: 28rpx;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 40rpx;
+}
+
+.resultBox-score {
+    font-weight: bold;
+    font-size: 200rpx;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 280rpx;
+}
+
+.resultBox-detail {
+    font-weight: bolder;
+    font-size: 36rpx;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 34rpx;
+    line-height: 67rpx;
+}
+
+.resultBox-strong {
+    font-weight: bolder;
+    font-size: 48rpx;
+    color: #ffe700;
+}
+
+.restart-btn {
+    border: 1rpx solid #ffffff;
+    border-radius: 100rpx;
+    width: 358rpx;
+    height: 98rpx;
+    background: transparent;
+    line-height: 98rpx;
+    font-weight: bolder;
+    font-size: 32rpx;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.history-highest-score {
+    line-height: 60rpx;
+    font-size: 22rpx;
+}

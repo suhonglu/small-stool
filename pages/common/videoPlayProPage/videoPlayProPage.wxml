@@ -1,0 +1,23 @@
+<view class="pageWrapper">
+    <video autoplay="{true}" bindfullscreenchange="onFullscreenChange" bindtimeupdate="onVideoTimeUpDdate" id="iVideo" loop="{true}" pageGesture="{true}" src="{{videoInfo.src}}"></video>
+    <view class="bottom-bar">
+        <navigator class="bottom-bar__btn" openType="switchTab" type="" url="/pages/moments/recommendFeedFlowPage/recommendFeedFlowPage">
+            <image class="bottom-bar__img bottom-bar__img-recommend" src="../../../src/img/play/recommend_icon.png"></image>
+            <span>热门</span>
+        </navigator>
+        <button class="bottom-bar__btn" openType="share" type="">
+            <image class="{{'bottom-bar__img bottom-bar__img-share '+(isShowShareAnim?'share-anim':'')}}" src="{{!needShowWxLogoShare?'../../../src/img/play/share_icon.png':'../../../src/img/play/share_icon_wx.png'}}"></image>
+            <span>分享</span>
+        </button>
+        <button bindgetuserinfo="handleGetUserInfo" class="tourist-btn-wrapper bottom-bar__btn" hoverClass="none" openType="getUserInfo" wx:if="{{isTourist}}">
+            <view class="" type="">
+                <image class="bottom-bar__img bottom-bar__img-favor" src="{{videoInfo.hasFavor?'../../../src/img/play/favor_icon-B.png':'../../../src/img/play/favor_icon-A.png'}}"></image>
+                <span>喜欢</span>
+            </view>
+        </button>
+        <view catchtap="handleFavorVideo" class="bottom-bar__btn" type="" wx:else>
+            <image class="bottom-bar__img bottom-bar__img-favor" src="{{videoInfo.hasFavor?'../../../src/img/play/favor_icon-B.png':'../../../src/img/play/favor_icon-A.png'}}"></image>
+            <span>喜欢</span>
+        </view>
+    </view>
+</view>

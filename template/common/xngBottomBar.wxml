@@ -1,0 +1,16 @@
+<template name="xng-bottom-bar">
+    <view class="bottom-bar {{barStyle==='white'?'white-nav-bar':''}}" style="background-color: {{backgroundColor?backgroundColor:''}}">
+        <view catchtap="{{onLeftTap}}" class="bottom-bar-button bottom-bar-left">
+            <image class="" mode="scaleToFill" src="{{leftIcon}}" wx:if="{{leftIcon}}"></image>
+            <view class="bottom-bar-text" style="{{leftStyle?leftStyle:''}}">{{leftText}}</view>
+        </view>
+        <view catchtap="{{onMidTap}}" class="bottom-bar-button bottom-bar-mid">
+            <image class="" mode="scaleToFill" src="{{midIcon}}" wx:if="{{midIcon}}"></image>
+            <view class="bottom-bar-text" style="{{midStyle?midStyle:''}}" wx:if="{{midText}}">{{midText}}</view>
+        </view>
+        <view catchtap="{{onRightTap}}" class="bottom-bar-button bottom-bar-right">
+            <image class="" mode="scaleToFill" src="{{rightIcon}}" wx:if="{{rightIcon}}"></image>
+            <view class="bottom-bar-text" style="{{rightStyle?rightStyle:''}}">{{rightText}}</view>
+        </view>
+    </view>
+</template>

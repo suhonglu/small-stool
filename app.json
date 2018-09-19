@@ -1,0 +1,94 @@
+{
+    "pages": [
+        "pages/moments/recommendFeedFlowPage/recommendFeedFlowPage",
+        "pages/moments/feedFlowPage/feedFlowPage",
+        "pages/moments/recommendFeedFlowBackUpPage/recommendFeedFlowBackUpPage",
+        "pages/moments/publicGroupListPage/publicGroupListPage",
+        "pages/moments/commentPage/commentPage",
+        "pages/moments/albumPage/albumPage",
+        "pages/moments/transhCanPage/transhCanPage",
+        "pages/me/groupListPage/groupListPage",
+        "pages/me/chooseNewGroupTypePage/chooseNewGroupTypePage",
+        "pages/me/myTiaHomeworkPage/myTiaHomeworkPage",
+        "pages/me/myOwnAlbumPage/myOwnAlbumPage",
+        "pages/me/forceAuthorizePage/forceAuthorizePage",
+        "pages/me/interactionPage/interactionPage",
+        "pages/me/ModifyOwnInfoPage/ModifyOwnInfoPage",
+        "pages/me/ownInfoManagePage/ownInfoManagePage",
+        "pages/me/myOwnProfilePage/myOwnProfilePage",
+        "pages/me/myOwnFeedsPage/myOwnFeedsPage",
+        "pages/me/personalProfilePage/personalProfilePage",
+        "pages/me/groupManagePage/groupManagePage",
+        "pages/me/buildGroupPage/buildGroupPage",
+        "pages/me/kickoutMemberPage/kickoutMemberPage",
+        "pages/me/ModifyGrpInfoPage/ModifyGrpInfoPage",
+        "pages/post/chooseTargetGrpPage/chooseTargetGrpPage",
+        "pages/post/postIndexProPage/postIndexProPage",
+        "pages/post/postIndexPage/postIndexPage",
+        "pages/tool/festivalCardPage/festivalCardPage",
+        "pages/tool/festivalCardEditPage/festivalCardEditPage",
+        "pages/tool/avatarEditorBetaPage/avatarEditorBetaPage",
+        "pages/tool/avatarEditorFramePage/avatarEditorFramePage",
+        "pages/tool/avatarResultSharePage/avatarResultSharePage",
+        "pages/tool/activeCollectorPage/activeCollectorPage",
+        "pages/tool/foolRedBagPage/foolRedBagPage",
+        "pages/tool/rankingListPage/rankingListPage",
+        "pages/tia/tiaCourseListPage/tiaCourseListPage",
+        "pages/tia/tiaCourseDetailPage/tiaCourseDetailPage",
+        "pages/tia/tiaJumpPage/tiaJumpPage",
+        "pages/tia/tiaSignCalendarPage/tiaSignCalendarPage",
+        "pages/tia/tiaQuestionnairePage/tiaQuestionnairePage",
+        "pages/common/videoPlayPage/videoPlayPage",
+        "pages/common/authorityRequstPage/authorityRequstPage",
+        "pages/common/videoPlayProPage/videoPlayProPage",
+        "pages/common/XNGvideoPlayPage/XNGvideoPlayPage",
+        "pages/common/webViewPage/webViewPage",
+        "pages/article/howToModifyWeixinAvatarPage/howToModifyWeixinAvatarPage",
+        "pages/common/customShareCardPage/customShareCardPage",
+        "pages/me/userFocusListPage/userFocusListPage",
+        "pages/me/userFansListPage/userFansListPage"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#000",
+        "navigationBarTitleText": "小板凳",
+        "navigationBarTextStyle": "white",
+        "onReachBottomDistance": 2500
+    },
+    "tabBar": {
+        "color": "#888",
+        "selectedColor": "#888",
+        "backgroundColor": "#fff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/moments/recommendFeedFlowPage/recommendFeedFlowPage",
+                "text": "推荐",
+                "iconPath": "src/image/perfect-o.png",
+                "selectedIconPath": "src/image/perfect-yellow.png"
+            },
+            {
+                "pagePath": "pages/me/groupListPage/groupListPage",
+                "text": "我的群",
+                "iconPath": "src/image/list-o.png",
+                "selectedIconPath": "src/image/list-yellow.png"
+            },
+            {
+                "pagePath": "pages/tool/activeCollectorPage/activeCollectorPage",
+                "text": "活动",
+                "iconPath": "src/image/active-o.png",
+                "selectedIconPath": "src/image/active-yellow.png"
+            },
+            {
+                "pagePath": "pages/me/myOwnProfilePage/myOwnProfilePage",
+                "text": "我",
+                "iconPath": "src/image/profile-o.png",
+                "selectedIconPath": "src/image/profile-yellow.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000
+    },
+    "debug": true
+}

@@ -1,0 +1,362 @@
+button.button-hover {
+    color: initial;
+    background-color: lightgray;
+}
+
+.nav-bar-left-icon {
+    width: 34px;
+    height: 34px;
+    background-color: transparent;
+    z-index: 3000;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.interactionEntry {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.interactionEntry image {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+
+.nav-bar-title {
+    float: left;
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 44px;
+    width: 10px;
+    height: 10px;
+    background: #e64340;
+    border-radius: 50%;
+}
+
+.weui-cell_active {
+    text-shadow: 0px 0px 1px lightslategray;
+    background-color: transparent;
+}
+
+.loading-card {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    transition: 2s;
+    text-align: center;
+}
+
+.loading-card-content {
+    width: 100%;
+    margin-top: -50px;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.loading-card-content-logo {
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.loading-card-content-icon {
+    height: 50px;
+    width: 50px;
+    background: transparent;
+    margin: 0 auto;
+}
+
+.loading-card-content-tip {
+    font-family: 'PingFangSC-Semibold';
+    font-weight: bolder;
+    font-size: 15px;
+    color: #333333;
+    text-align: center;
+    line-height: 60px;
+}
+
+.guide-card {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.80);
+}
+
+.guide-card_fakeBtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    height: 34px;
+    padding: 0;
+    background: transparent;
+}
+
+.guide-card_fakeBtn .btn-content {
+    height: 100%;
+    border-radius: 17px;
+    background: #ffe700;
+    padding: 0 27px;
+    line-height: 34px;
+    font-family: 'PingFangSC-Semibold';
+    font-weight: bolder;
+    color: #333333;
+    font-size: 15px;
+    text-align: center;
+}
+
+.guide-card_arrow {
+    position: absolute;
+    top: 52px;
+    right: 54px;
+    width: 12px;
+    height: 60px;
+    background: transparent;
+}
+
+.guide-card_tip {
+    width: 300px;
+    font-family: 'PingFangSC-Semibold';
+    font-weight: bolder;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    border: 2px dashed #fff;
+    border-radius: 27px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 120px auto;
+}
+
+.empty-card-content {
+    text-align: center;
+}
+
+.empty-card-content-img {
+    width: 137px;
+    height: 103px;
+}
+
+.empty--card-content-tip {
+    font-size: 15px;
+    margin: 0 20px 33px;
+}
+
+.empty--card-content-button {
+    width: 190px;
+    height: 60px;
+    line-height: 60px;
+    font-family: 'PingFangSC-Semibold';
+    font-weight: bolder;
+    color: #333333;
+    text-align: center;
+    border-radius: 30px;
+    display: inline-block;
+    background: #ffe700;
+}
+
+.recommendTipLine {
+    background: #eee;
+    font-size: 10px;
+    color: gray;
+    padding: 0 16px;
+    line-height: 22px;
+}
+
+.nav-bar-right-text {
+    padding: 0 27px;
+}
+
+.nav-bar-left {
+}
+
+.nav-bar-mid {
+    color: black;
+}
+
+.group-list {
+    width: 100%;
+    padding-bottom: 125px;
+    border-top: 1px solid #eee;
+    margin-top: 64px;
+}
+
+.group-list-item {
+    border-bottom: 1px solid #eee;
+}
+
+.group-list-item__mainBar {
+    display: flex;
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    padding: 0 20px;
+}
+
+.group-list-item__mainBar__hd {
+    position: relative;
+}
+
+.group-list-item__mainBar__hd image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px 12px 10px 0;
+}
+
+.weixinGrpIcon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #09bb07;
+}
+
+.group-list-item__mainBar__bd {
+    flex: 1;
+}
+
+.group-list-item__mainBar__bd .commonGrpCell {
+    overflow: hidden;
+    height: 60px;
+}
+
+.group-list-item__mainBar__bd .shareBindGrpCell {
+    position: relative;
+}
+
+.group-list-item__mainBar__bd open-data,.group-list-item__mainBar__bd .backUpWord {
+    display: block;
+    background: white;
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.group-list-item__mainBar__bd open-data {
+}
+
+.group-list-item__mainBar__ft {
+    width: 40px;
+    text-align: center;
+    height: 20px;
+    border-radius: 10px;
+    background: #ffe700;
+    line-height: 20px;
+    color: #666;
+    margin: auto;
+    font-size: 12px;
+}
+
+.group-list-item__mainBar__ft.red-round {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.group-list-item__imgBar {
+    padding: 0 20px 20px;
+    margin-right: -8px;
+}
+
+.list-item-imgWrapper {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1px 8px 0 0;
+    height: 60px;
+    width: 60px;
+}
+
+.grp-3-photo {
+    position: relative;
+}
+
+.grp-3-photo .video-icon {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.grp-3-photo .thumbnail-tag {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    line-height: 20px;
+    background: rgba(0,0,0,.4);
+    font-size: 12px;
+    color: white;
+    border-radius: 10px 0 0 0;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.group-list-item__imgBar image {
+    width: 100%;
+    height: 100%;
+}
+
+.page__ft {
+    position: fixed;
+    bottom: 45px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    background: white;
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255,255,255,1);
+    height: 50px;
+    line-height: 50px;
+    color: #000;
+    box-sizing: border-box;
+    z-index: 100;
+    display: flex;
+    -webkit-box-align: center;
+    transition: all .2s ease-in;
+    box-shadow: 0px -1px 2px 0px #eee;
+    transition: .5s;
+}
+
+.bottom-bar-button {
+    flex: 1;
+    width: 50%;
+    text-align: center;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.btn-icon {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 2px;
+}

@@ -1,0 +1,35 @@
+<import src="../../../template/common/xngDialog.wxml"></import>
+<template is="xng-dialog" data="{{...dialog}}" wx:if="{{!dialog.hidden}}"></template>
+<view class="container">
+    <view class="empty-card-content">
+        <image bindtap="onBuildGroupBtnTap" class="empty-card-content-img" src="../../../src/img/group/empty_grp_list.png"></image>
+        <view class="empty--card-content-tip">
+      分享到群聊，即可自动创建微信群绑定相册哦(*^__^*)
+    </view>
+        <view bindtap="onBuildGroupBtnTap" class="empty--card-content-button" style="margin-bottom: 50px">
+       ╋ 创建群相册 
+    </view>
+    </view>
+    <view class="recommendTipLine">- 可以先看看这些内容哦</view>
+    <view bindtap="onRecommendEntryTap" class="group-list-item" data-gid="{{groupItem.id}}" hoverClass="weui-cell_active" wx:for="{{recommendGroupList}}" wx:for-index="groupidx" wx:for-item="groupItem" wx:key="groupidx">
+        <view class="group-list-item__mainBar">
+            <view class="group-list-item__mainBar__hd">
+                <image src="{{groupItem.g_url}}"></image>
+            </view>
+            <view class="group-list-item__mainBar__bd">
+                <view class="commonGrpCell">{{groupItem.name||groupItem.id}} 🔥
+          </view>
+            </view>
+            <view class="group-list-item__mainBar__ft red-round" wx:if="{{groupItem.new_msg_count}}"></view>
+        </view>
+        <view class="group-list-item__imgBar" wx:if="{{groupItem.imageList.length}}">
+            <view class="list-item-imgWrapper" style="width:{{imageBoxWidth}}px;height:{{imageBoxWidth}}px" wx:for="{{groupItem.imageList}}" wx:for-index="photoidx" wx:for-item="itemImgInfo" wx:key="photoidx">
+                <image binderror="onPicErr" class="grp-3-photo" data-groupindex="{{groupidx}}" data-photoindex="{{photoidx}}" data-photosrc="{{itemImgInfo.url}}" mode="aspectFill" src="{{itemImgInfo.cover||itemImgInfo.url}}">
+                    <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='gif'}}">动图</text>
+                    <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='video'}}">视频</text>
+                    <image class="video-icon" src="../../../src/img/icon_play.png" wx:if="{{itemImgInfo.type==='video'}}"></image>
+                </image>
+            </view>
+        </view>
+    </view>
+</view>

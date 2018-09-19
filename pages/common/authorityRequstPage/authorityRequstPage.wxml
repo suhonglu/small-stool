@@ -1,0 +1,15 @@
+<view class="container">
+    <view class="logo">
+        <image class="logo__icon" src="../../../src/img/xbd-Logo.jpg"></image>
+        <text class="logo__name">小板凳群相册</text>
+    </view>
+    <button bindgetuserinfo="handleGetUserInfo" openType="getUserInfo" type="primary">
+        <text class="fa fa-weixin"></text> 微信登录
+  </button>
+    <view class="desc">
+        <view class="short-line"></view>
+        <view class="desc__title">
+      请登录以体验完整功能
+    </view>
+    </view>
+</view>

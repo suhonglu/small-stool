@@ -1,0 +1,1 @@
+<image bindtap="onPhotoTap" class="pic_item" data-index="{{index}}" mode="aspectFit" src="{{item}}" wx:for="{{pics}}" wx:key="*this"></image>

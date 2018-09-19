@@ -1,0 +1,26 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="content-wrapper">
+            <view class="page-title">活动</view>
+            <swiper circular class="banner-swiper" indicatorDots="{{indicatorDots}}">
+                <swiper-item wx:for="{{bannerList}}" wx:key="name">
+                    <navigator url="{{item.url}}">
+                        <image class="banner-image" mode="widthFix" src="{{item.imgSrc}}"></image>
+                        <view class="banner-title">{{item.title}}</view>
+                        <view class="banner-desc">{{item.desc}}</view>
+                    </navigator>
+                </swiper-item>
+            </swiper>
+            <view class="cut-line"></view>
+            <view class="active-list">
+                <navigator bindtap="{{item.onTap}}" class="active-item" hoverClass="active-item-hovor" url="{{item.url}}" wx:for="{{activeList}}" wx:key="name">
+                    <image class="active-image" mode="widthFix" src="{{item.imgSrc}}"></image>
+                    <view class="active-title">{{item.title}}</view>
+                </navigator>
+            </view>
+        </view>
+    </button>
+</form>
+<template is="xng-toast" data="{{toast:toast}}"></template>

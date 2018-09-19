@@ -1,0 +1,27 @@
+.album-permission {
+    background-color: #f7f4ec;
+    position: relative;
+    height: 60px;
+    padding: 22px 15px 22px 15px;
+    text-align: center;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.album-permission-text {
+    float: left;
+    color: #b8a37f;
+}
+
+.album-permission-btn {
+    position: relative;
+    float: right;
+    background: #ffffff;
+    border: 2px solid #e5ddcf;
+    border-radius: 4px;
+    width: 53px;
+    height: 28px;
+    line-height: 28px;
+    top: -8px;
+    color: #333333;
+}

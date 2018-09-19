@@ -1,0 +1,62 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<view class="page" wx:if="{{hasContent}}">
+    <template is="xng-nav-bar" data="{{...navBar}}"></template>
+    <view class="group-list">
+        <form reportSubmit bindsubmit="tplMsgFormSubmit">
+            <button class="tplMsgFormBtn" formType="submit">
+                <view bindlongtap="handleQuitGroup" bindtap="onGroupItemTap" bindtouchend="mytouchend" bindtouchstart="mytouchstart" class="group-list-item" data-gid="{{groupItem.id}}" hoverClass="weui-cell_active" wx:for="{{groupList}}" wx:for-index="groupidx" wx:for-item="groupItem" wx:key="groupidx">
+                    <view class="group-list-item__mainBar">
+                        <view class="group-list-item__mainBar__hd">
+                            <image src="{{groupItem.g_url}}"></image>
+                            <view class="fa fa-weixin weixinGrpIcon" wx:if="{{groupItem.type}}"></view>
+                        </view>
+                        <view class="group-list-item__mainBar__bd">
+                            <view class="shareBindGrpCell" wx:if="{{groupItem.type}}">
+                                <view class="backUpWord" wx:if="{{shouldBackUpWordShow}}">{{groupItem.name}}</view>
+                                <open-data openGid="{{groupItem.opengid}}" type="groupName" wx:if="{{showOpenData}}"></open-data>
+                            </view>
+                            <view class="commonGrpCell" wx:else>{{groupItem.name||groupItem.id}}</view>
+                        </view>
+                        <view class="group-list-item__mainBar__ft" wx:if="{{groupItem.new_msg_count}}">
+          {{groupItem.new_msg_count}}
+        </view>
+                    </view>
+                    <view class="group-list-item__imgBar" wx:if="{{groupItem.imageList.length}}">
+                        <view class="list-item-imgWrapper" style="width:{{imageBoxWidth}}px;height:{{imageBoxWidth}}px" wx:for="{{groupItem.imageList}}" wx:for-index="photoidx" wx:for-item="itemImgInfo" wx:key="photoidx">
+                            <image binderror="onPicErr" class="grp-3-photo" data-groupindex="{{groupidx}}" data-photoindex="{{photoidx}}" data-photosrc="{{itemImgInfo.url}}" mode="aspectFill" src="{{itemImgInfo.cover||itemImgInfo.url}}">
+                                <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='gif'}}">动图</text>
+                                <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='video'}}">视频</text>
+                                <image class="video-icon" src="../../../src/img/icon_play.png" wx:if="{{itemImgInfo.type==='video'}}"></image>
+                            </image>
+                        </view>
+                    </view>
+                </view>
+                <view bindlongpress="handleNavToFullFnPostPage" bindtap="onPostBtnTap" class="postBigBtn">
+                    <view class="postBigBtn-main">
+                        <text class="fa fa-photo"></text>
+                        <text class="plus">+</text>
+                        <view class="tip">发图片</view>
+                    </view>
+                </view>
+            </button>
+        </form>
+    </view>
+</view>
+<view class="page" wx:elif="{{!hasContent&&initialFail}}">
+    <form reportSubmit bindsubmit="tplMsgFormSubmit">
+        <button class="tplMsgFormBtn" formType="submit">
+            <view style="text-align: center;line-height:100px">网络有点问题,请下拉刷新重试</view>
+        </button>
+    </form>
+</view>
+<view class="page" wx:else>
+    <form reportSubmit bindsubmit="tplMsgFormSubmit">
+        <button class="tplMsgFormBtn" formType="submit">
+            <view style="text-align: center;line-height:100px">拼命拉取中...</view>
+        </button>
+    </form>
+</view>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<template is="xng-action-sheet" data="{{actionSheet:actionSheet}}"></template>

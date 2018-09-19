@@ -1,0 +1,5 @@
+<template name="xng-list-tail">
+    <view bindtap="{{manualFetchHandler}}" class="loading" wx:if="{{caseManualFetch}}">点击加载更多</view>
+    <view class="loading" wx:elif="{{caseLoading}}">正在加载...</view>
+    <view class="loaded-all" wx:else>— 留住我们共同的记忆 —</view>
+</template>

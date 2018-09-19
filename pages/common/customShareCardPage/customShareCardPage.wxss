@@ -1,0 +1,47 @@
+.share-card-box {
+    padding: 80rpx 20rpx;
+    text-align: center;
+}
+
+.share-card-box__desc-input {
+    text-align: left;
+    width: 660rpx;
+    margin: 0 auto;
+    line-height: 48rpx;
+    height: 100rpx;
+    background: #f8f8f8;
+    border-radius: 12rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.share-card-box__poster-img {
+    width: 660rpx;
+    height: 528rpx;
+    overflow: hidden;
+    margin: 0 auto 40rpx auto;
+    border-radius: 10rpx;
+}
+
+.share-card-box__poster-img image {
+    width: 100%;
+    border-radius: 10rpx;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.share-card-box__share-button {
+    display: inline-block;
+    padding: 0 100rpx;
+    height: 90rpx;
+    background: #ffee3b;
+    box-shadow: 0 6px 13px 0 rgba(243,209,72,0.60);
+    border-radius: 100rpx;
+    font-size: 36rpx;
+    line-height: 90rpx;
+    font-weight: bold;
+    color: #333333;
+    letter-spacing: 0;
+    text-align: center;
+}

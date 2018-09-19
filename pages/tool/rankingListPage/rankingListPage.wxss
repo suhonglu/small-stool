@@ -1,0 +1,18 @@
+.content {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #fff;
+    background: white;
+}

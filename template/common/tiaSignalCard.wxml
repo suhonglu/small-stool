@@ -1,0 +1,10 @@
+<template name="tia-signal-card">
+    <view class="back-mask">
+        <view bindtap="{{signalCard.handletap}}" class="tia-signal-card">
+            <view class="tia-signal-card__h1">恭喜您完成了今天的任务!</view>
+            <view class="tia-signal-card__h3">今天的打卡暗号是</view>
+            <view class="tia-signal-card__signal">{{signalCard.signal}}</view>
+            <view class="tia-signal-card__h4">(点击暗号, 一键复制)</view>
+        </view>
+    </view>
+</template>

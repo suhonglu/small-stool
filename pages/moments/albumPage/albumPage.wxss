@@ -1,0 +1,198 @@
+page {
+    background-color: black;
+    height: 100%;
+}
+
+.nav-bar-right-btn:nth-of-type(1) {
+    width: 60px;
+    margin-left: 10px;
+}
+
+.picture-wall-page {
+    background-color: black;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.counter {
+    padding: 0 3px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    font-size: 14px;
+    color: #929292;
+    background-color: #efeff4;
+}
+
+.empty-tip {
+    color: gray;
+    font-size: 16px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.empty-tip .empty-pic {
+    width: 50%;
+    height: 120px;
+    margin: 70px auto 0;
+    -webkit-filter: invert(1);
+}
+
+.empty-tip .empty-txt {
+    color: white;
+}
+
+.empty-tip .empty-pic image {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.photos-container {
+    width: 100%;
+    overflow-x: hidden;
+    background: black;
+    font-size: 14px;
+    padding: 64px 20px 0;
+    box-sizing: border-box;
+}
+
+.group-time {
+    line-height: 45px;
+    text-align: center;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0;
+}
+
+.group-time-selectM {
+    line-height: 45px;
+    color: #a1a1a1;
+    overflow: hidden;
+}
+
+.group-time-selectM .group-time {
+    float: left;
+}
+
+.group-time-selectM .selectall-btn {
+    float: right;
+    color: #ffe700;
+    font-weight: bold;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.transh-can {
+    width: 30%;
+    font-family: 'PingFangSC-Semibold';
+    font-weight: bolder;
+    color: #333333;
+    font-size: 15px;
+    text-align: center;
+    background: #ffe700;
+    border-radius: 17px;
+    height: 34px;
+    line-height: 34px;
+}
+
+.galleryMask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+}
+
+.mask-box-image {
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    bottom: 60px;
+    left: 0;
+    background: center center no-repeat;
+    background-size: contain;
+    z-index: 1001;
+}
+
+.actionSheet {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1002;
+    width: 100%;
+}
+
+.loading,.loaded-all {
+    padding: 10px 0;
+    background-color: black;
+}
+
+.loaded-all {
+    margin-top: 60px;
+}
+
+.bottom-tool-bar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    background: rgba(0,0,0,.7);
+    transition: .5s;
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: 50px;
+}
+
+.bottom-tool {
+    flex: 1;
+    text-align: center;
+}
+
+.bottom-tool .btnIco {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 2px;
+    background-color: transparent;
+    margin-right: 4px;
+}
+
+.images-container {
+    margin-right: -4px;
+}
+
+.image-box {
+    position: relative;
+    margin: 0px 4px 4px 0;
+}
+
+.image-box image {
+    background: dimgray;
+}
+
+.tapArea {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+image.checkbox {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.2);
+}

@@ -1,0 +1,51 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<view class="post-picture-page" wx:if="{{!isGrpChoosePanelShow}}">
+    <template is="xng-nav-bar" data="{{...navBar}}"></template>
+    <form reportSubmit bindsubmit="tplMsgFormSubmit">
+        <view class="post-panel">
+            <button class="tplMsgFormBtn" formType="submit">
+                <textarea bindinput="bindTextAreaInput" class="text-input" maxlength="200" placeholder="说点啥…"></textarea>
+                <view class="pic-uploader">
+                    <view class="upload-list" id="uploaderFiles">
+                        <view catchtap="{{uploadType!==2?'onPhotoTap':'onVideoTap'}}" class="image-wrapper" data-photo-index="{{idx}}" style="width: {{widthStyle}}px;height: {{widthStyle}}px" wx:for="{{tempFilePaths}}" wx:for-index="idx" wx:for-item="photoPath" wx:key="id">
+                            <view catchtap="onDelPhoto" class="tapArea" data-index="{{idx}}">
+                                <image class="delIcon" src="../../../src/img/group/icon_delete.png"></image>
+                            </view>
+                            <block wx:if="{{uploadType==2}}">
+                                <image class="image-wrapper_video-poster" mode="aspectFill" src="../../../src/img/video.jpg"></image>
+                                <text class="image-wrapper_video-duration">{{videoDuration}}</text>
+                            </block>
+                            <image mode="aspectFill" src="{{photoPath}}" wx:else></image>
+                        </view>
+                        <view bindtap="{{tempFilePaths.length?'onContinueUploadTap':'onUploadTap'}}" class="upload-btn" style="width: {{widthStyle}}px;height: {{widthStyle}}px" wx:if="{{tempFilePaths.length!==maxCount}}">
+                            <text class="fa fa-plus add-icon"></text>
+                        </view>
+                    </view>
+                    <view class="upload-tip">{{uploadType==2?'一次最多上传一个视频':'一次最多上传9张'}}</view>
+                </view>
+            </button>
+        </view>
+    </form>
+    <template is="xng-toast" data="{{toast:toast}}"></template>
+</view>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="groupPickerCard" wx:if="{{isGrpChoosePanelShow}}">
+            <image bindtap="handleCloseGrpPanel" class="close-icon" src="../../../src/img/icon_back.png"></image>
+            <view class="card-tip">
+                <text>请选择发到哪个相册</text>
+            </view>
+            <view class="group-list">
+                <view bindtap="onGrpSelected" class="group-list-item" data-grpid="{{groupItem.id}}" hoverClass="weui-cell_active" wx:for="{{groupList}}" wx:for-index="idx" wx:for-item="groupItem" wx:key="idx">
+                    <view class="group-list-item__hd">
+                        <image src="{{groupItem.g_url}}"></image>
+                    </view>
+                    <view class="group-list-item__bd">{{groupItem.name||groupItem.id}}</view>
+                </view>
+            </view>
+        </view>
+    </button>
+</form>
+<template is="xng-action-sheet" data="{{actionSheet:actionSheet}}"></template>

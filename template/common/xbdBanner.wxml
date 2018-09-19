@@ -1,0 +1,8 @@
+<template name="xbd-banner">
+    <button class="xbd-banner" openType="contact" sessionFrom="{{sessionfrom}}" wx:if="{{type==='kf'}}">
+        <image mode="widthFix" src="{{imgSrc}}"></image>
+    </button>
+    <navigator class="xbd-banner" url="{{url}}" wx:else>
+        <image mode="widthFix" src="{{imgSrc}}"></image>
+    </navigator>
+</template>

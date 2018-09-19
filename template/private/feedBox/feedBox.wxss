@@ -1,0 +1,200 @@
+.feed-container {
+    background: white;
+    overflow: hidden;
+    border-top: 1px solid #eeeeee;
+}
+
+.item-header {
+    overflow: hidden;
+    padding: 15px 20px;
+}
+
+.item-content {
+}
+
+.item-btnGroup {
+    overflow: hidden;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 20px;
+}
+
+.btnGroup-item {
+    float: right;
+    text-align: center;
+}
+
+button.btnGroup-item {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    line-height: inherit;
+    font-size: inherit;
+}
+
+.btnGroup-item image {
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+    vertical-align: sub;
+}
+
+.btnGroup-item text {
+    margin: 0 4px;
+    font-size: 12px;
+    color: #999;
+    font-family: PingFangSC-Regular;
+}
+
+.btnGroup-item.share-btn {
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-right: -20px;
+}
+
+.btnGroup-item.favor-btn image,.btnGroup-item.share-btn image {
+    width: 24px;
+    height: 24px;
+}
+
+.optBtn {
+    float: right;
+    width: 20px;
+    height: 20px;
+    padding: 5px 20px;
+    background: transparent;
+}
+
+.delBtn {
+    float: left;
+    color: #74769a;
+    font-size: 12px;
+}
+
+.commentBtns-wrapper {
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 44px;
+}
+
+.moreBtn {
+    float: left;
+    color: #999999;
+}
+
+.writeBtn {
+    float: right;
+    color: #444444;
+}
+
+.writeBtn image {
+    width: 18px;
+    height: 18px;
+    margin-right: 2px;
+    position: relative;
+    bottom: 1px;
+}
+
+.user-baseInfo {
+    display: flex;
+    float: left;
+}
+
+.user-avata {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.user-relate {
+    flex: 1;
+    line-height: 30px;
+}
+
+.relate-nick {
+    color: #333333;
+    font-size: 16px;
+    font-family: 'PingFangSC-Semibold';
+    font-weight: bolder;
+    letter-spacing: 0;
+    float: left;
+}
+
+.relate-time {
+    float: right;
+    font-size: 11px;
+    line-height: 30px;
+    color: #cecece;
+}
+
+.recentMsg-time {
+    font-size: 11px;
+    line-height: 30px;
+    color: #cecece;
+}
+
+.origin-group {
+    float: left;
+    font-size: 14px;
+    line-height: 60px;
+    color: #cecece;
+    height: 60px;
+    padding-left: 20px;
+}
+
+.origin-group-tips {
+    float: left;
+    margin-right: 4px;
+    color: #999;
+}
+
+.origin-group-name {
+    float: left;
+    position: relative;
+    height: 100%;
+    font-family: 'microsoft yahei';
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.origin-group-name .backUpWord {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #fff;
+}
+
+.origin-group-name .realName {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #fff;
+}
+
+.origin-group-name text,.origin-group-name open-data {
+    background: #0093ff;
+    border-radius: 30px;
+    color: #fff;
+    padding: 0px 10px;
+    display: inline-block;
+    line-height: 20px;
+    height: 20px;
+    vertical-align: top;
+}
+
+.content-pics {
+    padding: 0 20px;
+}
+
+.content-desc {
+    font-size: 14px;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+    padding: 0 20px;
+    color: #444444;
+    letter-spacing: 0;
+    line-height: 20px;
+}

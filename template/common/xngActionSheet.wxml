@@ -1,0 +1,54 @@
+<template name="xng-action-sheet">
+    <view wx:if="{{actionSheet&&!actionSheet.hidden}}">
+        <view catchtap="{{actionSheet.onCancel}}" catchtouchmove="emptyFn" class="back-mask"></view>
+        <view class="action-sheet {{actionSheet.hidden?'action-sheet-fade-out':'action-sheet-fade-in'}} ">
+            <view class="action-sheet-menu">
+                <view class="action-sheet-tip-cell" wx:if="{{actionSheet.tip}}">{{actionSheet.tip}}</view>
+                <view class="action-sheet-icons-cell" wx:if="{{actionSheet.type==1}}">
+                    <view class="{{idx==actionSheet.buttons.length-1?'action-sheet-icon-last-cell':'action-sheet-icon-cell'}}" wx:for="{{actionSheet.buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+                        <button catchtap="{{buttonChild.onTap}}" class="action-sheet-button-cell" data-disable="{{buttonChild.disable}}" openType="{{buttonChild.name=='发送给朋友'?'share':''}}" wx:for="{{button}}" wx:for-index="idx" wx:for-item="buttonChild" wx:key="name">
+                            <view class="action-sheet-button-view">
+                                <view class="action-sheet-icon">
+                                    <image class="action-sheet-icon-image" src="{{buttonChild.src}}"></image>
+                                </view>
+                                <view class="action-sheet-icon-text">
+                                    <text>{{buttonChild.name}}</text>
+                                </view>
+                            </view>
+                        </button>
+                    </view>
+                </view>
+                <view class="type-two-cell clearfloat" wx:if="{{actionSheet.type==2}}">
+                    <block wx:for="{{actionSheet.buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+                        <view catchtap="{{button.onTap}}" class="type-two-item" data-disable="{{button.disable}}">
+                            <image class="type-two-image" src="{{button.src}}"></image>
+              {{button.name}}
+            </view>
+                        <view class="vertical-seperator" wx:if="{{idx!==actionSheet.buttons.length-1}}"></view>
+                    </block>
+                </view>
+                <view wx:if="{{actionSheet.type==3}}">
+                    <view catchtap="{{button.onTap}}" class="action-sheet-cell" data-disable="{{button.disable}}" wx:for="{{actionSheet.buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+                        <view class="chat-checkbox-container">
+                            <checkbox-group bindchange="bindCheckboxChange">
+                                <label>
+                                    <text>{{button.name}}</text>
+                                    <checkbox checked="{{button.isChecked}}" class="chat-checkbox" color="#000000" disabled="{{button.disable}}" value="show"></checkbox>
+                                </label>
+                            </checkbox-group>
+                        </view>
+                    </view>
+                </view>
+                <view catchtap="{{button.onTap}}" class="action-sheet-cell {{button.subName?'action-sheet-cell_sub':''}} {{button.warning?'warning-btn':''}} {{button.primary?'primary-btn':''}} {{button.disable?'disable-btn':''}} {{button.default?'default-btn':''}} {{idx>0}}" data-disable="{{button.disable}}" style="display:{{actionSheet.type?'none':''}};padding: 0;height: 50px" wx:for="{{actionSheet.buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+                    <button openType="{{button.hasShareFn?'share':''}}">
+                        <view>{{button.name}}</view>
+                        <view class="sub-name" wx:if="{{button.subName}}">{{button.subName}}</view>
+                    </button>
+                </view>
+            </view>
+            <view class="action-sheet-action">
+                <view catchtap="{{actionSheet.onCancel}}" class="action-sheet-cell" style="">取消</view>
+            </view>
+        </view>
+    </view>
+</template>

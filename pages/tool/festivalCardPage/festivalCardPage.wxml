@@ -1,0 +1,54 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}" wx:if="{{isFirstPage}}"></template>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="content-wrapper">
+            <audio loop bindtap="handlePlayBgMusic" class="{{'bg-music-btn '+(bgMusicIsPlay?'icoRotate':'')}}" hidden="{{!cardList[currentIndex].music_url}}" id="bgAudio" src="{{cardList[currentIndex].music_url}}">
+                <i class="fa fa-music"></i>
+            </audio>
+            <view bindtap="handleOpenThemeSwitcher" class="switch-btn" wx:if="{{type!==2}}">切换主题</view>
+            <view bindtap="handleCloseThemeSwitcher" class="theme-switcher" wx:if="{{isThemeSwitcherShow}}">
+                <view class="themeList">
+                    <view bindtap="handleSelectTheme" class="themeItem" data-index="{{index}}" wx:for="{{cardList}}" wx:key="id">
+                        <image class="themeItem__poster" mode="widthFix" src="{{item.small_url}}"></image>
+                        <view class="themeItem__title">{{item.name}}</view>
+                    </view>
+                </view>
+            </view>
+            <image class="background-img" hidden="{{!hasLoad}}" src="{{cardList[currentIndex].url}}"></image>
+            <view class="main-part">
+                <block wx:if="{{type===1}}">
+                    <view class="owner__avatar">
+                        <image src="{{cardInfo.userAvatar}}"></image>
+                    </view>
+                    <view bindtap="handleNavToCardEditor" class="card-content__title">
+                        <span class="card-content__title__owner">{{cardInfo.userName}}</span> 祝{{cardInfo.toUserName}}:
+      </view>
+                    <view>
+                        <text bindtap="handleNavToCardEditor" class="card-content__desc">{{cardInfo.text}}</text>
+                    </view>
+                    <view class="btns-group-v">
+                        <button class=" btn share-btn" openType="share">分享给朋友送祝福</button>
+                        <button bindtap="handleNavToCardEditor" class="btn entry-btn">写祝福</button>
+                    </view>
+                </block>
+                <block wx:if="{{type===2}}">
+                    <view class="owner__avatar">
+                        <image src="{{cardInfo2.userAvatar}}"></image>
+                    </view>
+                    <view class="card-content__title">
+                        <span class="card-content__title__owner">{{cardInfo2.userName}}</span> 祝{{cardInfo2.toUserName}}:
+      </view>
+                    <view>
+                        <text selectable class="card-content__desc">{{cardInfo2.text}}</text>
+                    </view>
+                    <view class="btns-group-v">
+                        <button bindtap="handleSwitchCardState" class="btn operate-btn">我也要送祝福</button>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </button>
+</form>

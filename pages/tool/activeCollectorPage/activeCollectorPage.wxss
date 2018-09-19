@@ -1,0 +1,86 @@
+button {
+    margin: 0;
+    padding: 0;
+    font-size: initial;
+    line-height: initial;
+    border-radius: 0;
+    color: initial;
+    background-color: initial;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    padding: 0 30rpx;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-weight: bold;
+    font-size: 56rpx;
+    color: #333333;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.banner-swiper {
+    height: 530rpx;
+}
+
+.banner-image {
+    width: 100%;
+    height: 382rpx;
+    margin-bottom: 20rpx;
+    border-radius: 14rpx;
+    vertical-align: top;
+}
+
+.banner-title {
+    font-weight: bold;
+    font-size: 40rpx;
+    color: #444;
+    letter-spacing: 0;
+    text-align: left;
+    line-height: 56rpx;
+}
+
+.banner-desc {
+    font-size: 28rpx;
+    color: #666;
+    letter-spacing: 0;
+    text-align: left;
+    line-height: 48rpx;
+    margin-bottom: 24rpx;
+}
+
+.cut-line {
+    background: #ececec;
+    height: 1rpx;
+}
+
+.active-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 30rpx;
+}
+
+.active-item {
+    margin-bottom: 30rpx;
+}
+
+.active-title {
+    font-weight: bold;
+    font-size: 32rpx;
+    color: #444;
+    letter-spacing: 0;
+    text-align: left;
+    line-height: 45rpx;
+}
+
+.active-image {
+    border-radius: 14rpx;
+    width: 330rpx;
+    height: 198rpx;
+    margin-bottom: 10rpx;
+    vertical-align: top;
+}

@@ -1,0 +1,15 @@
+<template name="xng-img-card">
+    <view bindtap="{{imgCard.handleCloseImgCard}}" class="back-mask">
+        <view catchtap="{{imgCard.handleImgClick}}" class="xng-img-card" data-src="{{imgCard.src}}">
+            <image catchtap="{{imgCard.handleCloseImgCard}}" class="xng-img-card__closeImg" src="../../../src/img/X.png"></image>
+            <view class="xng-img-card__imgWrapper">
+                <image class="xng-img-card__imgWrapper__img" mode="widthFix" src="{{imgCard.src}}"></image>
+            </view>
+            <view bindtap="{{imgCard.handleCloseImgCard}}" class="xng-img-card__btns">
+                <button bindtap="{{item.handleTap}}" class="xng-img-card__btns__item" style="{{'flex: '+item.flex+';'+item.style}}" type="{{item.type}}" wx:for="{{imgCard.btns}}" wx:key="text">
+                    <text class="">{{item.text}}</text>
+                </button>
+            </view>
+        </view>
+    </view>
+</template>

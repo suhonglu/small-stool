@@ -1,0 +1,6 @@
+<template name="permission-view">
+    <view class="album-permission" style="display: {{permissionView.hidden?'none':''}};">
+        <view class="album-permission-text" style="font-size:{{isSmall?'12px':'15px'}}">{{permissionView.text}}</view>
+        <view catchtap="onPermissionTap" class="album-permission-btn">授权</view>
+    </view>
+</template>

@@ -1,0 +1,149 @@
+page {
+    background: #eee;
+}
+
+.weui-cell_access {
+    background: white;
+}
+
+.vertical-layout {
+    display: block;
+}
+
+.vertical-layout .weui-cell__ft {
+    text-align: left;
+}
+
+.weui-cell__bd {
+    font-size: 16px;
+}
+
+.weui-cell__ft {
+    font-size: 14px;
+}
+
+.nav-bar-mid {
+    color: #333;
+}
+
+.container {
+}
+
+.page-header {
+    overflow: hidden;
+    background: #eee;
+    border-bottom: 1rpx solid #d9d9d9;
+}
+
+.page-header .user-avata {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    margin: 60px auto;
+}
+
+.page-header .user-relate {
+    float: initial;
+    text-align: center;
+}
+
+.groupMemberList {
+    padding: 10px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.groupMemberItem {
+    width: 20%;
+    padding: 0 5px 15px 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.member-nick {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.member-avatar,.add-btn,.kick-btn {
+    width: 100%;
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
+    height: 0;
+    padding-top: 100%;
+}
+
+.add-btn,.kick-btn {
+    border: 1px solid lightgray;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.bars-group {
+    padding-top: 20px;
+    background: #f0f0f0;
+}
+
+.bars-group:last-of-type {
+    margin-bottom: 80px;
+}
+
+.bar-container:active {
+    background: #cecece;
+}
+
+.bar-container {
+    padding: 10px 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 14px;
+    line-height: 30px;
+    display: flex;
+    background: white;
+}
+
+.bar-container-main {
+    float: left;
+    width: 100%;
+}
+
+.bar-container-main-title {
+    font-size: 16px;
+}
+
+.bar-container-main-content {
+    color: #a6a6a6;
+}
+
+.bar-container-main-horizontal .bar-container-main-title {
+    float: left;
+}
+
+.bar-container-main-vertical .bar-container-main-content {
+    line-height: 18px;
+}
+
+.bar-container-main-horizontal .bar-container-main-content {
+    float: right;
+}
+
+.bar-container-entryArrow {
+    float: right;
+    margin-left: 10px;
+}
+
+.bar-container-entryArrow image {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    transform: rotate(180deg);
+    background: transparent;
+}

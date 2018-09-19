@@ -1,0 +1,33 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<import src="../../../template/common/tiaSignalCard.wxml"></import>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<template is="xng-action-sheet" data="{{actionSheet:actionSheet}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <scroll-view enableBackToTop scrollWithAnimation scrollY bindscroll="onScroll" class="tutorial-wrapper" scrollIntoView="{{newID}}">
+                <view class="tutorial-list">
+                    <view class="tutorial-list__item" id="{{item.id}}" wx:if="{{index<=enterIndex}}" wx:for="{{tutorialList}}" wx:key="id">
+                        <view class="item__avatar">
+                            <image lazyLoad src="https://static2.xiaoniangao.cn/mini_xbd/img/tia/avatar-supervise.jpg" wx:if="{{item.link&&item.link.kind===1}}"></image>
+                            <image lazyLoad src="{{currentLessonDetail.teacher.hurl}}" wx:else></image>
+                        </view>
+                        <view class="item__main">
+                            <view class="item__teacher" wx:if="{{item.link&&item.link.kind===1}}">服务质量监督</view>
+                            <view class="item__teacher" wx:else>{{currentLessonDetail.teacher.nick}} | {{currentLessonDetail.material.kind_str}}</view>
+                            <text class="item__content" wx:if="{{item.text}}">{{item.text}}</text>
+                            <image lazyLoad bindtap="handlePreviewImg" class="item__content" data-src="{{item.img}}" mode="widthFix" src="{{item.img}}" wx:if="{{item.img}}"></image>
+                            <text bindtap="handleNavToQuestionnaire" class="item__content" data-path="{{item.link.url}}" style="color: blue" wx:if="{{item.link&&(item.link.kind===1||item.link.kind===0)}}">{{item.link.title}}</text>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+            <view class="bottom-bar">
+                <view bindtap="handleAskForHelp" class="bottom-bar__item">向老师提问</view>
+                <view class="bottom-bar__divider"></view>
+            </view>
+            <view bindtap="handleScrollToBottom" class="newUnread-tag" wx:if="{{newUnreadCount}}">↓ {{newUnreadCount}}条新消息</view>
+        </view>
+    </button>
+</form>

@@ -1,0 +1,43 @@
+<template name="xng-nav-bar">
+    <form reportSubmit bindsubmit="tplMsgFormSubmit">
+        <button class="tplMsgFormBtn" formType="submit">
+            <view class="nav-bar {{bgColor==='black'?'black-nav-bar':''}}">
+                <view bindtap="{{onLeftTap}}" class="nav-bar-button nav-bar-left">
+                    <view class="fa fa-{{faBackBtn}} nav-bar-back-icon nav-bar-back-faIcon" wx:if="{{hasBackBtn&&faBackBtn}}"></view>
+                    <text class="nav-bar-back-icon-littleTag" wx:if="{{littleTag}}">{{littleTag}}</text>
+                    <image class="nav-bar-back-icon" mode="scaleToFill" src="../../../src/img/icon_back.png" wx:if="{{hasBackBtn&&!faBackBtn}}"></image>
+                    <button class="nav-bar-right-text" openType="{{leftBtn.hasShareFn?'share':''}}" wx:if="{{leftBtn.text}}">
+                        <image class="nav-bar-btn-image" src="{{leftBtn.subImgSrc}}" wx:if="{{leftBtn.subImgSrc}}"></image>
+                        <text class="{{leftBtn.subFaClass}}" wx:if="{{leftBtn.subFaClass}}"></text>
+        {{leftBtn.text}}
+      </button>
+                    <image class="nav-bar-left-img" mode="scaleToFill" src="{{leftImg}}" wx:if="{{leftImg}}">
+                        <view class="badge" wx:if="{{leftNum}}"></view>
+                    </image>
+                </view>
+                <view bindtap="{{rightText&&!rightDisable?onRightTap:null}}" class="nav-bar-button nav-bar-right" wx:if="{{rightText||rightBtns}}">
+                    <button class="nav-bar-right-text" openType="{{rightBtnHasContactFn?'contact':''}}" style="background: {{rightDisable?'#f3f3f3':''}}; color: {{rightDisable?'#999':''}};" wx:if="{{rightText}}">
+        {{rightText}}
+      </button>
+                    <view class="rightBtns-container" wx:if="{{rightBtns}}">
+                        <button bindtap="{{!rightBtn.disable?rightBtn.handleTap:null}}" class="nav-bar-right-btn nav-bar-button" hidden="{{!rightBtn}}" openType="{{rightBtn.hasShareFn?'share':''}}" wx:for="{{rightBtns}}" wx:for-index="idx" wx:for-item="rightBtn" wx:key="idx">
+                            <image class="nav-bar-right-icon" src="{{rightBtn.src}}" wx:if="{{rightBtn.src}}"></image>
+                            <view class="fa {{rightBtn.faClassName}} nav-bar-right-icon " wx:elif="{{rightBtn.faClassName}}"></view>
+                            <view class="nav-bar-right-wordBtn" style="background: {{rightBtn.disable?'#f3f3f3':''}}; color: {{rightBtn.disable?'#999':''}};" wx:else>
+            {{rightBtn.text}}
+          </view>
+                        </button>
+                    </view>
+                </view>
+                <view bindtap="{{onMidTap}}" class="nav-bar-button nav-bar-mid" wx:if="{{midText}}">
+                    <view class="nav-bar-mid-wrapper">
+                        <view class="midBadge weui-badge" wx:if="{{midNum}}">
+          {{midNum>99?'99+':midNum}}
+        </view>
+        {{midText}}
+      </view>
+                </view>
+            </view>
+        </button>
+    </form>
+</template>

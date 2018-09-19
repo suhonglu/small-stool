@@ -1,0 +1,34 @@
+<template name="xbd-bubble-action-sheet">
+    <view wx:if="{{actionSheet&&!actionSheet.hidden}}">
+        <view catchtap="{{actionSheet.onCancel}}" catchtouchmove="emptyFn" class="back-mask"></view>
+        <view class="bubble-action-sheet {{actionSheet.hidden?'bubble-action-sheet-fade-out':'bubble-action-sheet-fade-in'}} ">
+            <view class="bubble-action-sheet-menu">
+                <block wx:if="{{actionSheet.type==2}}">
+                    <view class="bubble-type-2x2-wrapper" wx:if="{{actionSheet.buttons.length===4}}">
+                        <view class="bubble-type-two-cell clearfloat">
+                            <view catchtap="{{button.onTap}}" class="bubble-type-two-item" data-disable="{{button.disable}}" wx:if="{{idx<2}}" wx:for="{{actionSheet.buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+                                <image class="bubble-type-two-image" src="{{button.src}}"></image>
+                                <view class="bubble-type-two-text">{{button.name}}</view>
+                            </view>
+                        </view>
+                        <view class="bubble-type-two-cell clearfloat">
+                            <view catchtap="{{button.onTap}}" class="bubble-type-two-item" data-disable="{{button.disable}}" wx:if="{{idx>=2}}" wx:for="{{actionSheet.buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+                                <image class="bubble-type-two-image" src="{{button.src}}"></image>
+                                <view class="bubble-type-two-text">{{button.name}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="bubble-type-two-cell clearfloat" wx:else>
+                        <view catchtap="{{button.onTap}}" class="bubble-type-two-item" data-disable="{{button.disable}}" wx:for="{{actionSheet.buttons}}" wx:for-index="idx" wx:for-item="button" wx:key="name">
+                            <image class="bubble-type-two-image" src="{{button.src}}"></image>
+                  {{button.name}}
+                </view>
+                    </view>
+                </block>
+                <view class="bubble-action-sheet-tip-cell" wx:if="{{actionSheet.tip}}">
+                    <text>{{actionSheet.tip}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

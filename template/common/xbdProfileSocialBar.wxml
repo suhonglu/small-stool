@@ -1,0 +1,8 @@
+<template name="xbd-social-bar">
+    <view class="xbd-social-net">
+        <navigator class="xbd-social-net__btn" url="{{item.navPath}}" wx:for="{{navGroup}}" wx:key="name">
+            <text class="xbd-social-net__btn__num">{{item.num}}</text>
+        {{item.name}}
+      </navigator>
+    </view>
+</template>

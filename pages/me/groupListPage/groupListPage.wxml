@@ -1,0 +1,136 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xbdBanner.wxml"></import>
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<import src="../../../template/common/tiaSignalCard.wxml"></import>
+<template is="tia-signal-card" data="{{signalCard:signalCard}}" wx:if="{{!signalCard.hidden}}"></template>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<template is="xng-action-sheet" data="{{actionSheet:actionSheet}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit" wx:if="{{hasContentMap['list']&&needShowBuildGroupGuide&&tabs.length<=1}}">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view catchtap="handleHideCard" class="guide-card">
+            <button bindtap="onBuildGroupBtnTap" class="guide-card_fakeBtn">
+                <view class="btn-content">创建群相册</view>
+            </button>
+            <image class="guide-card_arrow" src="../../../src/img/feed/arrow.png"></image>
+            <view class="guide-card_tip">分享到群聊，即可自动创建微信群绑定相册哦(*^__^*)</view>
+        </view>
+    </button>
+</form>
+<form reportSubmit bindsubmit="tplMsgFormSubmit" wx:if="{{hasContentMap['list']}}">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <view class="nav-bar" wx:if="{{tabs.length<=1}}">
+                <view bindtap="onInteractionEntryTap" class="nav-bar-left-icon interactionEntry">
+                    <image mode="scaleToFill" src="../../../src/image/interaction.jpg"></image>
+                    <view class="badge" wx:if="{{unreadCount>0}}"></view>
+                </view>
+                <view class="nav-bar-title nav-bar-left-text">我的群相册</view>
+                <view bindtap="onBuildGroupBtnTap" class="nav-bar-right">
+                    <view class="nav-bar-right-text">创建群相册</view>
+                </view>
+            </view>
+            <view class="" style="margin-top: {{tabs.length<=1?64:44}}px">
+                <view class="top-bar-wrapper" wx:if="{{tabs.length>1}}">
+                    <view bindtap="onInteractionEntryTap" class="top-bar__icon">
+                        <image mode="scaleToFill" src="../../../src/image/interaction.jpg"></image>
+                        <view class="badge" wx:if="{{unreadCount>0}}"></view>
+                    </view>
+                    <view class="list-tab-bar">
+                        <view bindtap="onTabTap" class="{{'list-tab-bar-item'+(item.data_name===currentDataName?' list-tab-bar-item-active':'')}}" data-dataName="{{item.data_name}}" data-index="{{index}}" wx:for="{{tabs}}" wx:key="{{item.data_name}}">
+                            <view class="list-tab-bar-item__title">{{item.name}}</view>
+                            <view class="list-tab-bar-item__guideBar"></view>
+                        </view>
+                    </view>
+                    <view bindtap="onBuildGroupBtnTap" class="top-bar__icon">
+                        <image mode="scaleToFill" src="../../../src/image/buildGroupAlbum.png" style="width: 24px;height: 24px;"></image>
+                    </view>
+                </view>
+                <template is="xbd-banner" data="{{...banner}}" wx:if="{{banner}}"></template>
+                <view class="group-list">
+                    <view bindlongtap="handleOptGroup" bindtap="onGroupItemTap" bindtouchend="mytouchend" bindtouchstart="mytouchstart" class="group-list-item fade_in" data-gid="{{groupItem.id}}" data-isDisableEnter="{{groupItem.noenter}}" data-isTopped="{{groupItem.top}}" data-name="{{groupItem.type===1?'':groupItem.name}}" data-noticeTxt="{{groupItem.notice}}" hoverClass="weui-cell_active" wx:for="{{groupList[currentDataName]}}" wx:for-index="groupidx" wx:for-item="groupItem" wx:key="id">
+                        <view class="top_triangle-icon" wx:if="{{groupItem.top}}">
+                            <text>顶</text>
+                        </view>
+                        <view class="group-list-item__mainBar">
+                            <view class="group-list-item__mainBar__hd">
+                                <image lazyLoad src="{{groupItem.g_url}}"></image>
+                                <view class="fa fa-weixin weixinGrpIcon" wx:if="{{groupItem.type===1}}"></view>
+                            </view>
+                            <view class="group-list-item__mainBar__bd">
+                                <view class="shareBindGrpCell" wx:if="{{groupItem.type===1}}">
+                                    <view class="backUpWord" wx:if="{{shouldBackUpWordShow}}">{{groupItem.name}}</view>
+                                    <open-data openGid="{{groupItem.opengid}}" type="groupName" wx:if="{{showOpenData}}"></open-data>
+                                </view>
+                                <view class="commonGrpCell" wx:else>{{groupItem.name||groupItem.id}}</view>
+                                <view class="groupTag">{{groupItem.groupTag}}</view>
+                            </view>
+                            <view catchtap="handleNavToTiaHomeworkSubmitPage" class="group-list-item__submitHomeworkBtn" data-gid="{{groupItem.id}}" hoverClass="btn_active" wx:if="{{currentDataName==='hwtablist'}}">交作业</view>
+                            <block wx:else>
+                                <view class="group-list-item__mainBar__ft" wx:if="{{groupItem.new_msg_count}}">{{groupItem.new_msg_count}}</view>
+                            </block>
+                        </view>
+                        <view class="group-list-item__imgBar" wx:if="{{groupItem.imageList.length}}">
+                            <view class="list-item-imgWrapper" style="width:{{imageBoxWidth}}px;height:{{imageBoxWidth}}px" wx:for="{{groupItem.imageList}}" wx:for-index="photoidx" wx:for-item="itemImgInfo" wx:key="photoidx">
+                                <image binderror="onPicErr" class="grp-3-photo" data-groupindex="{{groupidx}}" data-photoindex="{{photoidx}}" lazyLoad="true" mode="aspectFill" src="{{itemImgInfo.cover||itemImgInfo.url}}">
+                                    <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='gif'}}">动图</text>
+                                    <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='video'}}">{{itemImgInfo.ctype==='album'?'影集':'视频'}}</text>
+                                    <image lazyLoad class="video-icon" src="../../../src/img/icon_play.png" wx:if="{{itemImgInfo.type==='video'}}"></image>
+                                </image>
+                            </view>
+                            <view class="list-item-imgWrapper" style="width:{{imageBoxWidth}}px;height:{{imageBoxWidth}}px" wx:if="{{groupItem.imageList.length===2}}"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </button>
+</form>
+<form reportSubmit bindsubmit="tplMsgFormSubmit" wx:elif="{{hasLoad&&!initialFail}}">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <template is="xbd-banner" data="{{...banner}}" wx:if="{{banner}}"></template>
+            <view class="empty-card-content">
+                <image bindtap="onBuildGroupBtnTap" class="empty-card-content-img" src="../../../src/img/group/empty_grp_list.png"></image>
+                <view class="empty--card-content-tip">分享到群聊，即可自动创建微信群绑定相册哦(*^__^*)</view>
+                <view bindtap="onBuildGroupBtnTap" class="empty--card-content-button" style="margin-bottom: 25px">╋ 创建群相册</view>
+            </view>
+            <view class="recommendTipLine">- 可以先看看这些内容哦</view>
+            <view bindtap="onRecommendEntryTap" class="group-list-item" data-gid="{{groupItem.id}}" hoverClass="weui-cell_active" wx:for="{{recommendGroupList}}" wx:for-index="groupidx" wx:for-item="groupItem" wx:key="groupidx">
+                <view class="group-list-item__mainBar">
+                    <view class="group-list-item__mainBar__hd">
+                        <image src="{{groupItem.g_url}}"></image>
+                    </view>
+                    <view class="group-list-item__mainBar__bd">
+                        <view class="commonGrpCell">{{groupItem.name||groupItem.id}} 🔥 </view>
+                    </view>
+                    <view class="group-list-item__mainBar__ft red-round" wx:if="{{groupItem.new_msg_count}}"></view>
+                </view>
+                <view class="group-list-item__imgBar" wx:if="{{groupItem.imageList.length}}">
+                    <view class="list-item-imgWrapper" style="width:{{imageBoxWidth}}px;height:{{imageBoxWidth}}px" wx:for="{{groupItem.imageList}}" wx:for-index="photoidx" wx:for-item="itemImgInfo" wx:key="photoidx">
+                        <image class="grp-3-photo" data-groupindex="{{groupidx}}" data-photoindex="{{photoidx}}" data-photosrc="{{itemImgInfo.url}}" mode="aspectFill" src="{{itemImgInfo.cover||itemImgInfo.url}}">
+                            <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='gif'}}">动图</text>
+                            <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='video'}}">视频</text>
+                            <image class="video-icon" src="../../../src/img/icon_play.png" wx:if="{{itemImgInfo.type==='video'}}"></image>
+                        </image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </button>
+</form>
+<form reportSubmit bindsubmit="tplMsgFormSubmit" wx:elif="{{hasLoad&&initialFail}}">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <template is="xbd-banner" data="{{...banner}}" wx:if="{{banner}}"></template>
+            <view style="text-align: center;line-height:100px">网络有点问题,请下拉刷新重试</view>
+        </view>
+    </button>
+</form>
+<form reportSubmit bindsubmit="tplMsgFormSubmit" wx:else>
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <view style="text-align: center;line-height:100px">拼命拉取中...</view>
+        </view>
+    </button>
+</form>

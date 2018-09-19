@@ -1,0 +1,28 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}"></template>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="content-wrapper" style="">
+            <view catchtouchend="end" catchtouchmove="moveHat" catchtouchstart="start" class="canvasGroup">
+                <canvas canvasId="avatarEditor" class="canvasBoard" disableScroll="true" style="width: {{canvasW}}px; height: {{canvasH}}px"></canvas>
+                <canvas canvasId="avatarHat" class="hatCanvasBoard" disableScroll="true" hidden="{{willSaveAvatar}}" style="width: {{hat.w}}px; height: {{hat.h}}px; top: {{0.25*width/2}}px"></canvas>
+            </view>
+            <view class="optBtnGroup">
+                <view bindtap="saveToPhoto" class="main-btns">
+                    <view class="save-btn">
+        保存到手机相册
+      </view>
+                </view>
+                <view class="sub-btns">
+                    <view bindtap="onUploadImgBtnTap" class="fn-btn userDefineImg-btn">选择照片</view>
+                    <button bindtap="" class="fn-btn share-btn" openType="share">
+                        <text class="fa fa-weixin"></text>
+        分享
+      </button>
+                </view>
+            </view>
+        </view>
+    </button>
+</form>

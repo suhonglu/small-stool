@@ -1,0 +1,58 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<import src="./signDialog/signDialog.wxml"></import>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<template is="sign-dialog" data="{{...signDialog}}" wx:if="{{signDialog.show}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <view class="head-cell clearFloat cell">
+                <view class="fl">
+                    <image class="icon" src="https://xngstatic.oss-cn-shenzhen.aliyuncs.com/mini_xbd/img/tia/calendar_3.jpg"></image>
+                    <text bindtap="todaySignTap" class="head-cell__title">{{todaySign&&todaySign.state===20?'今日签到成功':'还差一步完成签到'}}</text>
+                </view>
+                <view class="fr">
+                    <text>{{currentYear}}年<text class="head-cell__month">{{currentMonth}}</text>月{{currentDate<10?'0'+currentDate:currentDate}}日</text>
+                </view>
+            </view>
+            <view class="calendar-cell cell">
+                <view class="date-switcher">
+                    <view bindtap="handleSwitchMonth" class="fa fa-arrow-circle-left switch-arrow" data-way="prev"></view>
+                    <view class="fa fa-calendar">
+        {{calendarData[calendarIndex].month}}月
+      </view>
+                    <view bindtap="handleSwitchMonth" class="fa fa-arrow-circle-right switch-arrow" data-way="next"></view>
+                </view>
+                <view class="calendar">
+                    <view class="calendar__weekList">
+                        <view class="calendar__weekItem">周日</view>
+                        <view class="calendar__weekItem">周一</view>
+                        <view class="calendar__weekItem">周二</view>
+                        <view class="calendar__weekItem">周三</view>
+                        <view class="calendar__weekItem">周四</view>
+                        <view class="calendar__weekItem">周五</view>
+                        <view class="calendar__weekItem">周六</view>
+                    </view>
+                    <view class="calendar__dateList">
+                        <view bindtap="onDateCircleTap" class="calendar__dateItem {{item.state===0?'.disable-date':item.state===20?'signed-date':'unsigned-date'}}" data-date="{{item.date}}" data-shareImg="{{item.img}}" data-state="{{item.state}}" data-type="{{item.type}}" wx:for="{{calendarData[calendarIndex].dateList}}" wx:key="*this">
+          {{item.date}}
+        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="static-cell cell">
+                <image class="icon" src="https://xngstatic.oss-cn-shenzhen.aliyuncs.com/mini_xbd/img/tia/calendar_2.jpg"></image>
+                <text>本期累计签到 {{totalSignedDays}}天</text>
+            </view>
+            <view class="tips-cell cell">
+                <view class="tips-cell__title">
+                    <image class="icon" src="https://xngstatic.oss-cn-shenzhen.aliyuncs.com/mini_xbd/img/tia/calendar_1.jpg"></image>
+                    <text>签到规则说明</text>
+                </view>
+                <view class="tips-cell__content">
+                    <text class="tips-cell__content__text">{{ruleText}}</text>
+                </view>
+            </view>
+        </view>
+    </button>
+</form>

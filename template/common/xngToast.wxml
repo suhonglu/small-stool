@@ -1,0 +1,5 @@
+<template name="xng-toast">
+    <view class="xng-toast" wx:if="{{toast&&!toast.hidden}}">
+        <text class="xng-toast-content">{{toast.text}}</text>
+    </view>
+</template>

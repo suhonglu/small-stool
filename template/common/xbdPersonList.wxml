@@ -1,0 +1,10 @@
+<template name="xbd-person-list">
+    <view class="xbd-person-list">
+        <view bindtap="{{itemTapHandler}}" class="xbd-person-item" data-index="{{index}}" wx:for="{{list}}" wx:key="nick">
+            <image class="xbd-person-item__avatar" src="{{item.hurl}}"></image>
+            <text class="xbd-person-item__nick">{{item.nick}}</text>
+            <button catchtap="{{focusHandler}}" class="xbd-person-item__focusBtn xbd-person-item__hasFocusBtn" data-index="{{index}}" wx:if="{{item.isFollow===1}}">已关注</button>
+            <button catchtap="{{focusHandler}}" class="xbd-person-item__focusBtn xbd-person-item__noFocusBtn" data-index="{{index}}" wx:elif="{{item.isFollow===0}}">+关注</button>
+        </view>
+    </view>
+</template>

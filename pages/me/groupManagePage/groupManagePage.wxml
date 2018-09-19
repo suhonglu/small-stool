@@ -1,0 +1,71 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngDialog.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}"></template>
+<template is="xng-dialog" data="{{...dialog}}" wx:if="{{!dialog.hidden}}"></template>
+<view class="container">
+    <view class="groupMemberList-wrapper">
+        <view class="groupMemberList">
+            <view bindtap="handleAvatarClick" class="groupMemberItem" data-gid="{{gid}}" data-mid="{{groupMemberItem.user_data.mid}}" data-nick="{{groupMemberItem.user_data.nick}}" wx:if="{{idx<memberShowCount}}" wx:for="{{groupMemberList}}" wx:for-index="idx" wx:for-item="groupMemberItem" wx:key="idx">
+                <view class="owner-mark" wx:if="{{groupMemberItem.user_data.owner}}">群主</view>
+                <view class="member-avatar" mode="widthFix" style="background-image: {{'url('+groupMemberItem.user_data.hurl+')'}}"></view>
+                <view class="member-nick">{{groupMemberItem.user_data.nick}}</view>
+            </view>
+        </view>
+        <view bindtap="handleOpenAllMemberListCard" class="moreMemberEntry" wx:if="{{groupMemberList.length>=memberShowCount}}">查看更多群成员 </view>
+    </view>
+    <view class="otherModule">
+        <view class="weui-cells weui-cells_after-title bars-group">
+            <view bindtap="handleNavToModifyGrpNamePage" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+                <view class="weui-cell__bd weui-cell__bd_grpName">{{groupInfo.type===1?'备注':'群名称'}}</view>
+                <view class="{{'weui-cell__ft weui-cell__ft_grpName '+(isOwner?'weui-cell__ft_in-access':'weui-cell__ft_in-disable')}}" style="height:'auto'">
+                    <view class="commonGrpCell">{{groupInfo.name||groupInfo.id}}</view>
+                </view>
+            </view>
+            <view bindtap="handleNavToModifyGrpTypePage" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+                <view class="weui-cell__bd">群类型</view>
+                <view class="{{'weui-cell__ft '+(isOwner&&groupInfo.type!==1?'weui-cell__ft_in-access':'weui-cell__ft_in-disable')}}">{{groupInfo.type===1?'微信群绑定相册':groupInfo.type===10?'影集相册':groupInfo.type===2?'个人相册':'群相册'}}
+              <text class="fa fa-weixin weixinGrpIcon" wx:if="{{groupInfo.type===1}}"></text>
+                </view>
+            </view>
+            <view bindtap="" class="weui-cell weui-cell_access weui-cell_switch" wx:if="{{groupInfo.type!==2}}">
+                <view class="weui-cell__bd">私密/公开</view>
+                <view class="group_tag" style="margin-right: 5px">
+              {{groupInfo.pub?'公开':'私密'}}
+            </view>
+                <view bindtap="onSwitchTap" class="weui-cell__ft">
+                    <switch bindchange="handlePublishGrp" checked="{{isPublic}}"></switch>
+                    <view class="switch-mask" wx:if="{{!isOwner||groupInfo.type===1}}"></view>
+                </view>
+            </view>
+            <view class="pub-desc" wx:if="{{groupInfo.pub_desc}}">
+                <text>{{groupInfo.pub_desc}}</text>
+            </view>
+            <view bindtap="handleNavToModifyGrpDescPage" class="weui-cell weui-cell_access vertical-layout" hoverClass="weui-cell_active">
+                <view class="{{isOwner?'weui-cell__ft_in-access':'weui-cell__ft_in-disable'}}">
+                    <view class="weui-cell__bd">群描述</view>
+                    <view class="weui-cell__ft">{{groupInfo.desc}}</view>
+                </view>
+            </view>
+        </view>
+        <button bindtap="handleQuitGroup" class="weui-btn" style="width: 90%" type="warn">删除并退出</button>
+    </view>
+</view>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<view class="allMemberListCard-mask" wx:if="{{isAllMemberListShow}}">
+    <scroll-view enableBackToTop scrollY bindscrolltolower="onScrollViewReachBottom" class="allMemberListCard">
+        <view class="groupMemberList">
+            <view bindtap="handleAvatarClick" class="groupMemberItem" data-gid="{{gid}}" data-mid="{{groupMemberItem.user_data.mid}}" data-nick="{{groupMemberItem.user_data.nick}}" wx:for="{{groupMemberList}}" wx:for-index="idx" wx:for-item="groupMemberItem" wx:key="idx">
+                <view class="owner-mark" wx:if="{{groupMemberItem.user_data.owner}}">群主</view>
+                <view class="member-avatar" mode="widthFix" style="background-image: {{'url('+groupMemberItem.user_data.hurl+')'}}"></view>
+                <view class="member-nick">{{groupMemberItem.user_data.nick}}</view>
+            </view>
+        </view>
+        <view>
+            <view bindtap="onScrollViewReachBottom" class="loading" wx:if="{{reachBottomFetchFail&&hasNext}}">点击加载更多</view>
+            <view class="loading" wx:elif="{{hasNext!==false}}">正在加载...</view>
+            <view class="loaded-all" wx:else>— 留住我们共同的记忆 —</view>
+        </view>
+    </scroll-view>
+    <image bindtap="handleCloseAllMemberListCard" class="close-card-icon" src="../../../src/img/group/icon_add_member.png"></image>
+</view>

@@ -1,0 +1,12 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}"></template>
+<view class="form-box">
+    <view class="inp-container" wx:if="{{targetAttr==='nick'}}">
+        <view class="input-label">
+        名字
+      </view>
+        <input bindinput="handleInput" class="input-box input-title-box" focus="true" maxlength="{{10}}" name="name" placeholder="不能超过10个字符" value="{{inpInitValue}}"></input>
+    </view>
+</view>
+<template is="xng-toast" data="{{toast:toast}}"></template>

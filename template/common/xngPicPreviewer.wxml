@@ -1,0 +1,5 @@
+<template name="xng-picPreviewer">
+    <view bindtap="{{picPreviewer.onHidePreviewer}}" class="xng-picPreviewer" wx:if="{{picPreviewer&&!picPreviewer.hidden}}">
+        <image class="xng-picPreviewer-content" mode="widthFix" src="{{picPreviewer.src}}"></image>
+    </view>
+</template>

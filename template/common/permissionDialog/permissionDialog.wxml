@@ -1,0 +1,59 @@
+<template name="permission-dialog">
+    <view class="back-mask" style="display: {{permission.hidden?'none':''}};">
+        <view class="permission-container" wx:if="{{isIos}}">
+            <view class="permission-title" style="font-size:{{isSmall?'15px':'17px'}}">
+                <view class="title-text">小年糕授权</view>
+            </view>
+            <view class="permission-line"></view>
+            <view class="permission-main">
+                <view class="permission-img-text">
+                    <image class="permission-image" src="../../../src/img/xng-icon.png"></image>
+                    <view class="permission-title" style="font-size:{{isSmall?'15px':'17px'}}">
+                        <view class="title-text con-text">小年糕+申请获得以下权限：</view>
+                    </view>
+                    <view class="permission-line permission-margin" style="margin-bottom:{{isSmall?'0':'3%'}}"></view>
+                    <view class="permission-title">
+                        <view class="title-text permission-text" style="font-size:{{isSmall?'11px':'13px'}}">
+                            <text>{{permission.text}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="permission-btns">
+                <view class="permission-line"></view>
+                <view class="permission-btn">
+                    <view catchtap="{{permission.onRefuseTap}}" class="title-text title-cancel">拒绝</view>
+                </view>
+                <view class="permission-verline"></view>
+                <view class="permission-btn">
+                    <view catchtap="{{permission.onAllowTap}}" class="title-text title-done">允许</view>
+                </view>
+            </view>
+        </view>
+        <view class="permission-container" wx:if="{{!isIos}}">
+            <view class="permission-android">
+                <view class="permission-android-all">
+                    <view class="permission-android-title" style="font-size:20px;">小年糕授权</view>
+                    <view class="permission-img-text" style="text-align: left;">
+                        <view class="permission-android-main">
+                            <image class="permission-android-image" src="../../../src/img/xng-icon.png" style="float:left;"></image>
+                            <view class="permission-title" style="font-size:{{isSmall?'12px':'14px'}};float:left;width:78%;top:30%">
+                                <view class="title-text con-text">小年糕+申请获得以下权限：</view>
+                            </view>
+                        </view>
+                        <view class="permission-line permission-margin" style="margin-top:10%;margin-bottom:{{isSmall?'0':'3%'}}"></view>
+                        <view class="permission-title" style="height:35%">
+                            <view class="title-text permission-text" style="font-size:{{isSmall?'11px':'13px'}}">
+                                <text>{{permission.text}}</text>
+                            </view>
+                        </view>
+                        <view class="permission-android-btns">
+                            <view catchtap="{{permission.onAllowTap}}" class="title-text title-done" style="float:right;font-size:{{isSmall?'12px':'18px'}}">允许</view>
+                            <view catchtap="{{permission.onRefuseTap}}" class="title-text title-cancel" style="float:right;margin-right:18px;font-size:{{isSmall?'12px':'18px'}}">拒绝</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

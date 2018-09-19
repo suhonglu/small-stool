@@ -1,0 +1,3 @@
+<template name="xbd-favor-heart">
+    <image class="xbd-fadeFavorHeart" src="../../../src/img/feed/icon_good_B_hd.png" style="top: {{Y}}px; left: {{X}}px" wx:if="{{show}}"></image>
+</template>

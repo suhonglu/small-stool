@@ -1,0 +1,18 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}"></template>
+<view class="form-box">
+    <view class="inp-container" wx:if="{{targetAttr==='name'}}">
+        <view class="input-label">
+        相册名称
+      </view>
+        <input bindinput="handleInput" class="input-box input-title-box" focus="true" maxlength="{{20}}" name="name" placeholder="不能超过20个字符" value="{{inpInitValue}}"></input>
+    </view>
+    <view class="inp-container" wx:elif="{{targetAttr==='desc'}}">
+        <view class="input-label">
+        相册介绍
+      </view>
+        <textarea autoFocus="true" bindinput="handleInput" class="input-box input-desc-box" maxlength="{{200}}" name="desc" placeholder="不能超过200个字符" value="{{inpInitValue}}"></textarea>
+    </view>
+</view>
+<template is="xng-toast" data="{{toast:toast}}"></template>

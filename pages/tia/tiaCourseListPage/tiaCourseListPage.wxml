@@ -1,0 +1,53 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngActionSheet.wxml"></import>
+<import src="../../../template/common/tiaSignalCard.wxml"></import>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<template is="xng-action-sheet" data="{{actionSheet:actionSheet}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="page">
+            <view class="cell">
+                <view class="course-head">今日课程</view>
+                <view class="course-list">
+                    <view class="course-list-item-container" hoverClass="weui-cell_active" wx:for="{{todayCourseList}}" wx:for-item="courseItem" wx:key="id">
+                        <view bindtap="onCourseDetailEntryClick" class="course-list-item" data-lessonid="{{courseItem.id}}" data-position="{{courseItem.pos}}" data-state="{{courseItem.period}}">
+                            <view class="course-list-item__info">
+                                <view class="course-list-item__info-subInfo">
+                                    <view class="course-list-item__info-time">{{courseItem.startTime}}</view>
+                                    <view class="{{'course-list-item__info-state course-item-state_'+courseItem.period}}">{{courseItem.status}}</view>
+                                </view>
+                                <view class="course-list-item__info-title">
+                                    <text>{{courseItem.title}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="course-list-item-container" wx:if="{{!todayCourseList.length}}">
+                    <view class="course-emptyTip">今天没有课，记得拍照哦</view>
+                </view>
+            </view>
+            <view class="cell">
+                <view class="course-head">所有课程</view>
+                <view class="course-list">
+                    <view class="course-list-item-container" hoverClass="weui-cell_active" wx:for="{{courseList}}" wx:for-item="courseItem" wx:key="id">
+                        <view bindtap="onCourseDetailEntryClick" class="course-list-item" data-lessonid="{{courseItem.id}}" data-position="{{courseItem.pos}}" data-state="{{courseItem.period}}">
+                            <view class="course-list-item__info">
+                                <view class="course-list-item__info-subInfo">
+                                    <view class="course-list-item__info-time">{{courseItem.startTime}}</view>
+                                    <view class="{{'course-list-item__info-state course-item-state_'+courseItem.period}}">{{courseItem.status}}</view>
+                                </view>
+                                <view class="course-list-item__info-title">
+                                    <text>{{courseItem.title}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="loading" wx:if="{{!hasLoad}}">正在加载...</view>
+        <view class="loaded-all" wx:elif="{{courseList.length}}">— 好好学习, 天天向上 —</view>
+        <view class="loaded-all" wx:else>— 暂时没有课程哦 —</view>
+    </button>
+</form>

@@ -1,0 +1,25 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<view>
+    <form reportSubmit bindreset="formReset" bindsubmit="formSubmitAdd">
+        <view class="form-box">
+            <view class="inp-container">
+                <view class="input-label">
+          相册名称
+        </view>
+                <input class="input-box input-title-box" maxlength="{{20}}" name="name" placeholder="我们的记忆"></input>
+            </view>
+            <view class="inp-container">
+                <view class="input-label">
+          相册介绍
+        </view>
+                <textarea class="input-box input-desc-box" maxlength="{{200}}" name="desc" placeholder="非必填, 不能超过200个字符"></textarea>
+            </view>
+            <view class="submitBtn-container">
+                <button bindtap="" class="submit-btn" formType="submit" type="">
+          创建
+        </button>
+            </view>
+        </view>
+    </form>
+    <template is="xng-toast" data="{{toast:toast}}"></template>
+</view>

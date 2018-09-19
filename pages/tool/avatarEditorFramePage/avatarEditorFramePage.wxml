@@ -1,0 +1,49 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-nav-bar" data="{{...navBar}}"></template>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="content-wrapper" style="">
+            <view class="previewWrapper" hidden="{{mode==='edit'}}">
+                <image class="previewImg" disableScroll="true" src="{{previewSrc}}" style="width: {{width}}px; height: {{height}}px"></image>
+            </view>
+            <view catchtouchend="end" catchtouchmove="moveHat" catchtouchstart="start" class="canvasWrapper" hidden="{{mode==='preview'}}">
+                <canvas canvasId="avatarEditor" class="canvasBoard" disableScroll="true" style="width: {{canvasW}}px; height: {{canvasH}}px"></canvas>
+            </view>
+            <view class="optBtnGroup">
+                <view class="main-btns">
+                    <button bindtap="handleConfirmProject" class="fn-btn" wx:if="{{frameGroup[currentFrameIndex].type==='send'&&mode==='edit'}}">
+        确认
+      </button>
+                    <button class="fn-btn" openType="share" wx:elif="{{!firstEnterPreviewMode}}">
+        {{frameGroup[currentFrameIndex].shareBtnTxt||'分享给朋友'}}
+      </button>
+                    <view bindtap="onRemakeAndReturnBtnTap" class="fn-btn" wx:if="{{mode==='preview'&&firstEnterPreviewMode}}">我也要做一个</view>
+                </view>
+                <view class="sub-btns">
+                    <view bindtap="onUploadImgBtnTap" class="sub-btn userDefineImg-btn" wx:if="{{mode==='edit'}}">选择照片</view>
+                    <view bindtap="onRemakeBtnTap" class="sub-btn userDefineImg-btn" wx:if="{{mode==='preview'&&!firstEnterPreviewMode}}">重新制作</view>
+                    <view bindtap="onSaveBtnClick" class="sub-btn save-btn" wx:if="{{mode==='preview'||frameGroup[currentFrameIndex].type!=='send'}}">
+        保存到手机
+      </view>
+                </view>
+            </view>
+            <view class="frame-selector-wrapper" wx:if="{{frameGroup.length&&frameGroup.length>1&&mode==='edit'}}">
+                <view class="frame-selector-tip">
+                    <view bindtap="onFrameBarPageArrowPrevClick" class="fl frame-selector-btn">{{'<'}}</view>
+      选择你喜欢的装饰
+      <view bindtap="onFrameBarPageArrowNextClick" class="fr frame-selector-btn">{{'>'}}</view>
+                </view>
+                <scroll-view scrollWithAnimation scrollX class="frame-selector-list" scrollIntoView="{{'frame_'+(currentFrameIndex-1<0?0:currentFrameIndex-1)}}">
+                    <view bindtap="onFrameThumbnailClick" class="{{'frame-selector-list__item'+(currentFrameIndex===index?' active':'')}}" data-id="{{item.id}}" data-index="{{index}}" data-url="{{item.url}}" id="{{'frame_'+index}}" wx:for="{{frameGroup}}" wx:key="id">
+                        <view class="item-image">
+                            <image mode="aspectFit" src="{{item.small_url}}"></image>
+                        </view>
+                        <view class="item-desc">{{item.name}}</view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </button>
+</form>

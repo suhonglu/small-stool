@@ -1,0 +1,48 @@
+<import src="../../../template/common/xngToast.wxml"></import>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <image bindtap="onPhotoTap" class="avatarShowContainer" src="{{imgUrl}}"></image>
+        <view class="content">
+            <view class="content__tip">
+                <text>保存成功, 去手机相册看看吧!</text>
+            </view>
+            <view class="content__btn">
+                <button class="" openType="share"> 分享给朋友</button>
+            </view>
+            <view bindtap="onRetryBtnClick" class="content__btn sub-content__btn">
+                <button class="">再做一张</button>
+            </view>
+            <navigator class="little-tip content__tutorial" url="/pages/article/howToModifyWeixinAvatarPage/howToModifyWeixinAvatarPage">
+                <span class=""> 如何修改微信头像？快来点我!</span>
+            </navigator>
+            <view class="little-tip-danger little-tip">
+                <text>替换微信头像会使当前头像丢失,
+    请提前保存当前头像</text>
+            </view>
+            <button bindtap="handleSaveOriginWxAvatar" class="saveOriginWxAvatarBtn sub-btn">保存</button>
+        </view>
+        <block wx:if="{{needShowHatGroupEntry&&hatGroupInfo&&hatGroupInfo.name}}">
+            <view class="recommendTipLine">- 可以晒到这里哦</view>
+            <view bindtap="onHatGroupEntryTap" class="group-list-item" data-gid="{{hatGroupInfo.id}}" hoverClass="weui-cell_active">
+                <view class="group-list-item__mainBar">
+                    <view class="group-list-item__mainBar__hd">
+                        <image src="{{hatGroupInfo.g_url}}"></image>
+                    </view>
+                    <view class="group-list-item__mainBar__bd">
+                        <view class="commonGrpCell">{{hatGroupInfo.name||hatGroupInfo.id}} 🔥 </view>
+                    </view>
+                </view>
+                <view class="group-list-item__imgBar" wx:if="{{hatGroupInfo.imageList.length}}">
+                    <view class="list-item-imgWrapper" style="width:{{imageBoxWidth}}px;height:{{imageBoxWidth}}px" wx:for="{{hatGroupInfo.imageList}}" wx:for-index="photoidx" wx:for-item="itemImgInfo" wx:key="photoidx">
+                        <image class="grp-3-photo" data-groupindex="{{groupidx}}" data-photoindex="{{photoidx}}" data-photosrc="{{itemImgInfo.url}}" mode="aspectFill" src="{{itemImgInfo.cover||itemImgInfo.url}}">
+                            <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='gif'}}">动图</text>
+                            <text class="thumbnail-tag" wx:if="{{itemImgInfo.type==='video'}}">视频</text>
+                            <image class="video-icon" src="../../../src/img/icon_play.png" wx:if="{{itemImgInfo.type==='video'}}"></image>
+                        </image>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </button>
+</form>

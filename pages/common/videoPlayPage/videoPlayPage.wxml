@@ -1,0 +1,9 @@
+<view class="pageWrapper">
+    <video autoplay="{true}" bindfullscreenchange="onFullscreenChange" loop="{true}" src="{{src}}">
+        <cover-view bindtap="handleQuitPreview" class="quitBtn" wx:if="{{!targetGid}}">退出</cover-view>
+    </video>
+    <view class="bottomBar enable" wx:if="{{targetGid}}">
+        <view bindtap="handleQuitPreview" class="bottomBar-preview">退出</view>
+        <view bindtap="handlePostAlbum" class="bottomBar-send">发送</view>
+    </view>
+</view>

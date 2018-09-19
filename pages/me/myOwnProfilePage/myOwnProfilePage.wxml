@@ -1,0 +1,51 @@
+<import src="../../../template/common/xngNavBar.wxml"></import>
+<import src="../../../template/common/xngToast.wxml"></import>
+<import src="../../../template/common/xngDialog.wxml"></import>
+<import src="../../../template/common/xbdProfileSocialBar.wxml"></import>
+<template is="xng-dialog" data="{{...dialog}}" wx:if="{{!dialog.hidden}}"></template>
+<template is="xng-toast" data="{{toast:toast}}"></template>
+<form reportSubmit bindsubmit="tplMsgFormSubmit">
+    <button class="tplMsgFormBtn" formType="submit">
+        <view class="content">
+            <view class="page-content">
+                <view class="page-header">
+                    <template is="xng-nav-bar" data="{{...navBar}}"></template>
+                    <view class="page-header__main">
+                        <view class="flex-wrapper page-header__baseBox">
+                            <image class="page-header__avata" src="{{hurl}}"></image>
+                            <view class="page-header__btnbox">
+                                <button class="page-header__btnbox__share" data-duty="forPageShare" openType="share">
+              分享
+            </button>
+                                <button bindtap="onModifyEntryTap" class="page-header__btnbox__setting fa fa-gear"></button>
+                            </view>
+                        </view>
+                        <view class="page-header__nick">
+            {{nick}}
+        </view>
+                        <template is="xbd-social-bar" data="{{...socialBar}}"></template>
+                    </view>
+                </view>
+                <view class="feed-container">
+                    <view bindtap="onFeedItemTap" class="feed-main fade_in" data-feedid="{{item.id}}" wx:for="{{list}}" wx:for-index="idx" wx:key="id">
+                        <image lazyLoad class="feed-main__poster" mode="aspectFill" src="{{item.img_data[0].url}}"></image>
+                        <view class="feed-main__mask"></view>
+                        <view class="feed-main__textBox" wx:if="{{item.txt}}">
+                            <text class="fa fa-quote-left"></text>
+                            <text class="feed-main__textBox__num"> {{item.txt}}</text>
+                        </view>
+                        <view class="feed-main__dataBox" wx:if="{{item.type===10?item.uv:item.pv}}">
+                            <text class="fa fa-eye"></text>
+                            <text class="feed-main__dataBox__num">{{item.type===10?item.uv:item.pv}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{hasContent||!hasLoad||true}}">
+                <view bindtap="onReachBottom" class="loading" wx:if="{{reachBottomFetchFail&&hasNext}}">点击加载更多</view>
+                <view class="loading" wx:elif="{{hasNext}}">正在加载...</view>
+                <view class="loaded-all" wx:else>— 留住我们共同的记忆 —</view>
+            </view>
+        </view>
+    </button>
+</form>

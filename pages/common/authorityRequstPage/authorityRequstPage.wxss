@@ -1,0 +1,50 @@
+.container {
+    padding: 40rpx 70rpx;
+}
+
+.logo {
+    text-align: center;
+    padding: 60rpx 0;
+    margin-bottom: 60rpx;
+}
+
+.logo__icon {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 20rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.logo__name {
+    font-size: 50rpx;
+    font-weight: bold;
+    line-height: 200rpx;
+}
+
+.desc {
+    margin: 80rpx 0;
+}
+
+.desc__title {
+    font-size: 36rpx;
+    line-height: 120rpx;
+    margin-bottom: 40rpx;
+    text-align: center;
+    color: #8c8c8c;
+}
+
+.desc__tips {
+}
+
+.desc__tips__items {
+    font-size: 38rpx;
+    color: #a3a3a3;
+}
+
+.short-line {
+    height: 2rpx;
+    background: #d4d4d4;
+    width: 60rpx;
+    margin: 0 auto;
+}
